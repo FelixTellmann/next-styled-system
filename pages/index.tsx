@@ -10,7 +10,6 @@ const Tester = (props) => {
   </>;
 };
 
-
 export const Index: FC = () => {
   
   const h1ref = createRef();
@@ -30,11 +29,11 @@ export const Index: FC = () => {
         w={[`100%`, `50%`]}
         d="flex"
         content={`This is funny!`}
+        _hfa={{ bgc: `blue` }}
         onClick={() => { setTest2(test2 + 1); }}>aasd</H1>
     <HTMLElement HTMLTag={`div`} p={2}>Hello</HTMLElement>
     {/*<TEST p={test2} border="1px solid red" m="auto" w={[`100%`, `50%`]} d="flex" onClick={() => { setTest2(test2 + 1); }}>aasd</TEST>
     <TEST p={4} border="1px solid red" m="auto" w={[`100%`, `50%`]} d="flex" onClick={() => { setTest2(test2 + 1); }}>aasd</TEST>*/}
-    
     
     
     <Tester>Helllo</Tester>

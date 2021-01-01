@@ -125,6 +125,7 @@ export type LayoutProps = {
   backgroundAttachment?: CSS.BackgroundAttachment | CSS.BackgroundAttachment[]
   backgroundClip?: CSS.BackgroundClip | CSS.BackgroundClip[]
   backgroundColor?: CSS.BackgroundClip | CSS.BackgroundClip[]
+  bgc?: CSS.BackgroundClip | CSS.BackgroundClip[]
   backgroundImage?: CSS.BackgroundImage | CSS.BackgroundImage[]
   backgroundOrigin?: (CSS.BackgroundOrigin | number) | (CSS.BackgroundOrigin | number)[]
   backgroundPositionX?: (CSS.BackgroundPositionX | number) | (CSS.BackgroundPositionX | number)[]
@@ -143,6 +144,7 @@ export type LayoutProps = {
   fz?: (CSS.FontSize | number) | (CSS.FontSize | number)[]
   fontWeight?: (CSS.FontWeight | number) | (CSS.FontWeight | number)[]
   fw?: (CSS.FontWeight | number) | (CSS.FontWeight | number)[]
+  weight?: (CSS.FontWeight | number) | (CSS.FontWeight | number)[]
   lineHeight?: (CSS.LineHeight | number) | (CSS.LineHeight | number)[]
   letterSpacing?: (CSS.LetterSpacing | number) | (CSS.LetterSpacing | number)[]
   textAlign?: CSS.TextAlign | CSS.TextAlign[]
@@ -780,6 +782,7 @@ const cssSelectorsOld = {
     backgroundClip: ""
   },
   backgroundColor: "color",
+  bgc: { backgroundColor: "color" },
   backgroundImage: "",
   backgroundOrigin: "",
   backgroundPositionX: "space",
@@ -972,7 +975,7 @@ const cssSelectors = {
   "gridTemplateRows": [{ "-ms-grid-rows": "", "gridTemplateRows": "" }],
   "gridTemplateColumns": [{ "-ms-grid-columns": "", "gridTemplateColumns": "" }],
   "gridTemplateAreas": [""],
-  "position": ["",[`pos`]],
+  "position": ["", [`pos`]],
   "top": ["space"],
   "right": ["space"],
   "bottom": ["space"],
@@ -983,11 +986,12 @@ const cssSelectors = {
   "overflowY": [""],
   "color": ["color"],
   "background": ["color", [`bg`]],
-  "bg": [{ "background": "color" }],
+  "bg": [{ "background": "color" }, [`bg`]],
   "opacity": [""],
   "backgroundAttachment": ["", [`bga`]],
   "backgroundClip": [{ "-webkit-background-clip": "", "backgroundClip": "" }, [`bgclip`]],
   "backgroundColor": ["color", [`bgc`]],
+  "bgc": [{ "backgroundColor": "color" }, [`bgc`]],
   "backgroundImage": ["", [`bgi`]],
   "backgroundOrigin": ["", [`bgo`]],
   "backgroundPositionX": ["space", [`bgpx`]],
@@ -1002,14 +1006,14 @@ const cssSelectors = {
   "outlineWidth": ["space"],
   "visibility": [""],
   "fontFamily": [""],
-  "fontSize": ["fontSize",[`fz`]],
-  "fz": [{ "fontSize": "fontSize" },[`fz`]],
-  "fontWeight": ["",[`fw`]],
-  "fw": [{ "fontWeight": "fontWeight" },[`fw`]],
-  "weight": [{ "fontWeight": "fontWeight" },[`fw`]],
-  "lineHeight": ["",[`lh`]],
-  "letterSpacing": ["",[`ls`]],
-  "textAlign": ["",[`talign`]],
+  "fontSize": ["fontSize", [`fz`]],
+  "fz": [{ "fontSize": "fontSize" }, [`fz`]],
+  "fontWeight": ["", [`fw`]],
+  "fw": [{ "fontWeight": "fontWeight" }, [`fw`]],
+  "weight": [{ "fontWeight": "fontWeight" }, [`fw`]],
+  "lineHeight": ["", [`lh`]],
+  "letterSpacing": ["", [`ls`]],
+  "textAlign": ["", [`talign`]],
   "fontStyle": [""],
   "textDecoration": [""],
   "textTransform": [""],
@@ -1109,11 +1113,11 @@ function getResponsiveValue(val: string | number | (string | number)[], bp: numb
 }
 
 function toCssValue(key: "" | "fontSize" | "space" | "content", val: string | number, cfg): string {
-  if (key === 'content') return `"${val}"`
+  if (key === "content") return `"${val}"`;
   if (cfg[key]) {
     return parseCssVariables(parseCssSizes(val, key, cfg));
   }
- 
+  
   return parseCssVariables(val);
 }
 
@@ -1186,6 +1190,16 @@ function createSingleStyle([key, val]: any, breakpoint = 0, cfg: ConfigProps): s
   return acc;
 }
 
+function getClassName(key, val, bp, pseudo, config) {
+  const cssValue = toCssValue(typeof cssSelectors[key][0] === "string"
+                              ? cssSelectors[key][0]
+                              : cssSelectors[key][0][Object.keys(cssSelectors[key][0])[0]], getResponsiveValue(val, bp), config).split(" ");
+  const cleanCssValue = cssValue.map(val => val.match(/rem$/)
+                                            ? String(+val.replace(/rem$/, "") * 10)
+                                            : val).join("-").replace(/\s/g, "-").replace(/[!&\/\\#,+()$~%.'":*?<>{}]/g, "");
+  return `${pseudo ? `${pseudo}-` : ""}${bp > 0 ? `bp${bp}-` : ""}${cssSelectors[key][1] ? cssSelectors[key][1][0] : key}-${cleanCssValue}`;
+}
+
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export function nextStyledSystem(props: any, config: ConfigProps = {}): { id?: string; styles?: string; styleArray: [string, string][]; filteredProps? } {
   
@@ -1196,7 +1210,7 @@ export function nextStyledSystem(props: any, config: ConfigProps = {}): { id?: s
   const { breakpoints } = config;
   
   const filteredProps = /*useMemo(() => */Object.entries(props).reduce((a, [k, v]) => {
-    if (cssSelectors[k] === undefined && pseudoSelectors[k] === undefined && k !== "HTMLTag" && k !== "forwardedRef") {
+    if (cssSelectors[k] === undefined && pseudoSelectors[k] === undefined) {
       return { ...a, [k]: v };
     }
     return a;
@@ -1227,19 +1241,15 @@ export function nextStyledSystem(props: any, config: ConfigProps = {}): { id?: s
   const styles = [];
   
   /*= =============== Create Styles & Classes - CSS Selectors ================ */
-  Object.entries(cssProps).forEach(([key, val]: [ string, string | number | (string | number)[]]) => {
+  Object.entries(cssProps).forEach(([key, val]: [string, string | number | (string | number)[]]) => {
     const style = createSingleStyle([key, val], 0, config);
-    const cssValue = toCssValue(typeof cssSelectors[key][0] === "string" ? cssSelectors[key][0] : cssSelectors[key][0][Object.keys(cssSelectors[key][0])[0]], getResponsiveValue(val, 0), config).split(' ');
-    const cleanCssValue = cssValue.map(val=> val.match(/rem$/) ? String(+val.replace(/rem$/, '') * 10) : val).join('-');
-    const className = `${cssSelectors[key][1] ? cssSelectors[key][1][0] : key}-${cleanCssValue.replace(/\s/g, "-").replace(/[!&\/\\#,+()$~%.'":*?<>{}]/g,'')}`;
-    styles.push([className, `.${className.replace(/([%])/g, "\\$1")}{${style}}`]);
+    const className = getClassName(key, val, 0, false, config);
+    styles.push([className, `.${className}{${style}}`]);
     if (Array.isArray(val)) {
       for (let i = 1; i < breakpoints.length; i++) {
         const responsiveStyle = createSingleStyle([key, val], i, config);
         if (val.length > i) {
-          const cssValue = toCssValue(typeof cssSelectors[key][0] === "string" ? cssSelectors[key][0] : cssSelectors[key][0][Object.keys(cssSelectors[key][0])[0]], getResponsiveValue(val, i), config).split(' ');
-          const cleanCssValue = cssValue.map(val=> val.match(/rem$/) ? String(+val.replace(/rem$/, '') * 10) : val).join('-');
-          const className = `bp${i}_${cssSelectors[key][1] ? cssSelectors[key][1][0] : key}-${cleanCssValue.replace(/\s/g, "-").replace(/[!&\/\\#,+()$~%.'":*?<>{}]/g,'')}`;
+          const className = getClassName(key, val, i, false, config);
           styles.push([
             className,
             `@media screen and (min-width: ${breakpoints[i]}px){.${className.replace(/([%])/g, "\\$1")}{${responsiveStyle}}}`
@@ -1255,19 +1265,20 @@ export function nextStyledSystem(props: any, config: ConfigProps = {}): { id?: s
   Object.entries(pseudoProps).forEach(([k, v]) => {
     Object.entries(v).forEach(([key, val]) => {
       const style = createSingleStyle([key, val], 0, config);
-      const className = `${k}-${cssSelectors[key][1] ? cssSelectors[key][1][0] : key}-${String(Array.isArray(val) ? val[0] : val).replace(/\s/g, "-")}`;
+      const className = getClassName(key, val, 0, k, config);
       const pseudoClassName = pseudoSelectors[k].replace(/&/gi, `.${className}`);
-      styles.push([className, `${pseudoClassName.replace(/([%])/g, "\\$1")}{${style}}`]);
+      
+      styles.push([className, `${pseudoClassName}{${style}}`]);
       
       if (Array.isArray(val)) {
         for (let i = 1; i < breakpoints.length; i++) {
           const responsiveStyle = createSingleStyle([key, val], i, config);
           if (val.length > i) {
-            const className = `${k}-bp${i}-${cssSelectors[key][1] ? cssSelectors[key][1][0] : key}-${String(Array.isArray(val) ? val[i] : val).replace(/\s/g, "-")}`;
+            const className = getClassName(key, val, i, key, config);
             const pseudoClassName = pseudoSelectors[k].replace(/&/gi, `.${className}`);
             styles.push([
               className,
-              `@media screen and (min-width: ${breakpoints[i]}px){${pseudoClassName.replace(/([%])/g, "\\$1")}{${responsiveStyle}}}`
+              `@media screen and (min-width: ${breakpoints[i]}px){${pseudoClassName}{${responsiveStyle}}}`
             ]);
           } else {
             break;

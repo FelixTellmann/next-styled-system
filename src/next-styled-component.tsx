@@ -38,9 +38,12 @@ export class HTMLElement extends Component<LayoutProps & PseudoSelectorProps & H
       });
       this.prevProps = currentIds;
     }
+    
+    const {HTMLTag, forwardedRef, ...filteredProps} = test.filteredProps
+    
     return createElement(
-      this.props.HTMLTag || "div",
-      { className: cn(test.styleArray.map(([className]) => `${className}`)), ref: this.props.forwardedRef, ...test.filteredProps },
+      HTMLTag || "div",
+      { className: cn(test.styleArray.map(([className]) => `${className}`)), ref: forwardedRef, ...filteredProps },
       this.props.children
     );
   }
@@ -51,7 +54,7 @@ export const Element = (HTMLTag = "div", ref?) => {
     return forwardRef((props: CssProps & HTMLAttributes<any> & { HTMLTag?: string }, ref) => {
       return createElement(
         HTMLElement,
-        {forwardRef: ref, ...props},
+        {forwardedRef: ref, ...props},
         props.children
       );
     });
