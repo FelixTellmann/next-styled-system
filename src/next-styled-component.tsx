@@ -6,49 +6,6 @@ import { Registry } from "./stylesheet-registry";
 
 const styleSheetRegistry = new Registry();
 
-export class HTMLElement extends Component<LayoutProps & PseudoSelectorProps & HTMLAttributes<any> & { HTMLTag?: string, forwardedRef?: ForwardedRef<unknown> }> {
-  private prevProps: string[];
-  
-  constructor(props) {
-    super(props);
-    this.prevProps = [];
-  }
-  
-  componentWillUnmount() {
-    this.prevProps.forEach(id => {
-      styleSheetRegistry.remove({ id });
-    });
-  }
-  
-  render() {
-    const test = nextStyledSystem(this.props);
-    const currentIds = [...test.styleArray.map(([id]) => id)];
-    if (this.prevProps.length === 0 || JSON.stringify(this.prevProps) !== JSON.stringify(currentIds)) {
-      
-      this.prevProps.forEach(id => {
-        if (!currentIds.includes(id)) {
-          styleSheetRegistry.remove({ id });
-        }
-      });
-      
-      test.styleArray.forEach(([className, style]) => {
-        if (!this.prevProps.includes(className)) {
-          styleSheetRegistry.add({ id: className, children: style });
-        }
-      });
-      this.prevProps = currentIds;
-    }
-    
-    const {HTMLTag, forwardedRef, ...filteredProps} = test.filteredProps
-    
-    return createElement(
-      HTMLTag || "div",
-      { className: cn(test.styleArray.map(([className]) => `${className}`)), ref: forwardedRef, ...filteredProps },
-      this.props.children
-    );
-  }
-}
-
 export const Element = (HTMLTag = "div", ref?) => {
   if (ref) {
     return forwardRef((props: CssProps & HTMLAttributes<any> & { HTMLTag?: string }, ref) => {
