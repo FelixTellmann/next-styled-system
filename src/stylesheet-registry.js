@@ -1,6 +1,6 @@
 import StyleSheetRegistry from "styled-jsx/dist/stylesheet-registry";
 
-export default class Registry extends StyleSheetRegistry {
+export class Registry extends StyleSheetRegistry {
   add(props) {
     if (undefined === this._optimizeForSpeed) {
       this._optimizeForSpeed = Array.isArray(props.children)

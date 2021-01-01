@@ -2,7 +2,7 @@ import cn from "classnames";
 import React, { Component, createElement, ForwardedRef, forwardRef, HTMLAttributes, ReactElement } from "react";
 import { CssProps, LayoutProps, nextStyledSystem, PseudoSelectorProps } from "./next-styled-system";
 import { preflightCss } from "./preflight.css";
-import Registry from "./stylesheet-registry";
+import { Registry } from "./stylesheet-registry";
 
 const styleSheetRegistry = new Registry();
 

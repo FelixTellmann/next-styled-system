@@ -5,7 +5,7 @@
   "main": "dist/next-styled-system.js",
   "umd:main": "dist/next-styled-system.umd.js",
   "module": "dist/next-styled-system.m.js",
-  "types": "index.d.ts",
+  "types": "dist/index.d.ts",
   "source": "src/index.tsx",
   "scripts": {
     "dev": "next",
