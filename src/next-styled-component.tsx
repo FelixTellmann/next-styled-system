@@ -11,7 +11,7 @@ export const Element = (HTMLTag = "div", ref?) => {
     return forwardRef((props: CssProps & HTMLAttributes<any> & { HTMLTag?: string }, ref) => {
       return createElement(
         class HTMLElement extends Component<LayoutProps & PseudoSelectorProps & HTMLAttributes<any> & { HTMLTag?: string, forwardedRef?: ForwardedRef<unknown> }> {
-          private prevProps: string[];
+          public prevProps: string[];
     
           constructor(props) {
             super(props);
@@ -58,7 +58,7 @@ export const Element = (HTMLTag = "div", ref?) => {
     });
   } else {
     return class HTMLElement extends Component<LayoutProps & PseudoSelectorProps & HTMLAttributes<any> & { HTMLTag?: string, forwardedRef?: ForwardedRef<unknown> }> {
-      private prevProps: string[];
+      public prevProps: string[];
   
       constructor(props) {
         super(props);
