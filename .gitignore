@@ -1,0 +1,12 @@
+.idea
+.next
+node_modules
+.env
+.env.local
+.jest-test-results.json
+.mdx-data
+**/public/workbox-*.js
+**/public/sw.js*
+**/public/service-worker.js*
+# Project exclude paths
+/dist/
