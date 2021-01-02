@@ -192,15 +192,15 @@ export const NamedElement = (HTMLTag = "div", className, ref?) => {
     return forwardRef((props: CssProps & HTMLAttributes<any> & { HTMLTag?: string }, ref) => {
       return createElement(
         class HTMLElement extends Component<LayoutProps & PseudoSelectorProps & HTMLAttributes<any> & { HTMLTag?: string, forwardedRef?: ForwardedRef<unknown> }> {
-          public prevProps: [number, string?];
+          public prevProps: [number, string?, string?];
     
           constructor(props) {
             super(props);
-            this.prevProps = [0, ''];
+            this.prevProps = [0, '', ''];
           }
     
           componentWillUnmount() {
-            styleSheetRegistry.remove({ id: this.prevProps });
+            styleSheetRegistry.remove({ id: this.prevProps[2] });
           }
     
           render() {
@@ -210,15 +210,17 @@ export const NamedElement = (HTMLTag = "div", className, ref?) => {
             if (this.prevProps[1] !== id) {
               if (this.prevProps[0]=== 0) {
                 styleSheetRegistry.add({ id: className, children: styles.replace(regex,`.${className}`) });
-                this.prevProps[0] += 1;
+                this.prevProps[2] = className;
                 this.prevProps[1] = id;
+                this.prevProps[0] += 1;
               } else {
                 if (this.prevProps[0] !== 1) {
                   styleSheetRegistry.remove({ id: `${className}-${this.prevProps[0] - 1}`, children: styles.replace(regex,`.${className}-${this.prevProps[0] - 1}`) });
                 }
                 styleSheetRegistry.add({ id: `${className}-${this.prevProps[0]}`, children: styles.replace(regex,`.${className}-${this.prevProps[0]}`) });
-                this.prevProps[0] += 1;
+                this.prevProps[2] = `${className}-${this.prevProps[0]}`;
                 this.prevProps[1] = id;
+                this.prevProps[0] += 1;
               }
             }
       
