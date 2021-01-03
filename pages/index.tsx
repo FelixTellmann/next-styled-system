@@ -2,7 +2,9 @@ import { FC, useState } from "react";
 import { NamedElement, VariantElement,Element } from "../src";
 
 const H1 = VariantElement('h1')
-const H3 = NamedElement('h1', 'MyClassNameSpecial')
+const H3 = NamedElement('h1', 'MyClassNameSpecial', {
+  m: 2
+})
 const H2 = Element('h2')
 
 type IndexProps = {};
