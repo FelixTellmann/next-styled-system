@@ -6,11 +6,11 @@ import { Registry } from "./stylesheet-registry";
 
 const styleSheetRegistry = new Registry();
 
-export const Element = (HTMLTag = "div", defaultProps = {}, ref?) => {
+export const Element = (HTMLTag = "div", defaultProps: LayoutProps & PseudoSelectorProps = {}, ref?) => {
   if (ref) {
-    return forwardRef((props: CssProps & HTMLAttributes<any> & { HTMLTag?: string }, ref) => {
+    return forwardRef((props: CssProps & HTMLAttributes<any> & { as?: string }, ref) => {
       return createElement(
-        class HTMLElement extends Component<LayoutProps & PseudoSelectorProps & HTMLAttributes<any> & { HTMLTag?: string, forwardedRef?: ForwardedRef<unknown> }> {
+        class HTMLElement extends Component<LayoutProps & PseudoSelectorProps & HTMLAttributes<any> & { as?: string, forwardedRef?: ForwardedRef<unknown> }> {
           public prevProps: string[];
           
           constructor(props) {
@@ -46,7 +46,7 @@ export const Element = (HTMLTag = "div", defaultProps = {}, ref?) => {
             const { forwardedRef, ...filteredProps } = test.filteredProps;
             
             return createElement(
-              HTMLTag || "div",
+              this.props.as || HTMLTag || "div",
               { className: cn(test.styleArray.map(([className]) => `${className}`)), ref: forwardedRef, ...filteredProps },
               this.props.children
             );
@@ -57,7 +57,7 @@ export const Element = (HTMLTag = "div", defaultProps = {}, ref?) => {
       );
     });
   } else {
-    return class HTMLElement extends Component<LayoutProps & PseudoSelectorProps & HTMLAttributes<any> & { HTMLTag?: string, forwardedRef?: ForwardedRef<unknown> }> {
+    return class HTMLElement extends Component<LayoutProps & PseudoSelectorProps & HTMLAttributes<any> & { as?: string, forwardedRef?: ForwardedRef<unknown> }> {
       public prevProps: string[];
       
       constructor(props) {
@@ -93,7 +93,7 @@ export const Element = (HTMLTag = "div", defaultProps = {}, ref?) => {
         const { forwardedRef, ...filteredProps } = test.filteredProps;
         
         return createElement(
-          HTMLTag || "div",
+          this.props.as || HTMLTag || "div",
           { className: cn(test.styleArray.map(([className]) => `${className}`)), ref: forwardedRef, ...filteredProps },
           this.props.children
         );
@@ -102,11 +102,11 @@ export const Element = (HTMLTag = "div", defaultProps = {}, ref?) => {
   }
 };
 
-export const VariantElement = (HTMLTag = "div", defaultProps = {}, ref?) => {
+export const VariantElement = (HTMLTag = "div", defaultProps: LayoutProps & PseudoSelectorProps = {}, ref?) => {
   if (ref) {
-    return forwardRef((props: CssProps & HTMLAttributes<any> & { HTMLTag?: string }, ref) => {
+    return forwardRef((props: CssProps & HTMLAttributes<any> & { as?: string }, ref) => {
       return createElement(
-        class HTMLElement extends Component<LayoutProps & PseudoSelectorProps & HTMLAttributes<any> & { HTMLTag?: string, forwardedRef?: ForwardedRef<unknown> }> {
+        class HTMLElement extends Component<LayoutProps & PseudoSelectorProps & HTMLAttributes<any> & { as?: string, forwardedRef?: ForwardedRef<unknown> }> {
           public prevProps: string;
           
           constructor(props) {
@@ -137,7 +137,7 @@ export const VariantElement = (HTMLTag = "div", defaultProps = {}, ref?) => {
             const { forwardedRef, ...filteredProps } = test.filteredProps;
   
             return createElement(
-              HTMLTag || "div",
+              this.props.as || HTMLTag || "div",
               { className: `jsx-${id}`, ref: forwardedRef, ...filteredProps },
               this.props.children
             );
@@ -148,7 +148,7 @@ export const VariantElement = (HTMLTag = "div", defaultProps = {}, ref?) => {
       );
     });
   } else {
-    return class HTMLElement extends Component<LayoutProps & PseudoSelectorProps & HTMLAttributes<any> & { HTMLTag?: string, forwardedRef?: ForwardedRef<unknown> }> {
+    return class HTMLElement extends Component<LayoutProps & PseudoSelectorProps & HTMLAttributes<any> & { as?: string, forwardedRef?: ForwardedRef<unknown> }> {
       public prevProps: string;
   
       constructor(props) {
@@ -178,7 +178,7 @@ export const VariantElement = (HTMLTag = "div", defaultProps = {}, ref?) => {
     
         const { forwardedRef, ...filteredProps } = test.filteredProps;
         return createElement(
-          HTMLTag || "div",
+          this.props.as || HTMLTag || "div",
           { className: `jsx-${id}`, ref: forwardedRef, ...filteredProps },
           this.props.children
         );
@@ -187,11 +187,11 @@ export const VariantElement = (HTMLTag = "div", defaultProps = {}, ref?) => {
   }
 };
 
-export const NamedElement = (HTMLTag = "div", className, defaultProps = {}, ref?) => {
+export const NamedElement = (HTMLTag = "div", className, defaultProps: LayoutProps & PseudoSelectorProps = {}, ref?) => {
   if (ref) {
-    return forwardRef((props: CssProps & HTMLAttributes<any> & { HTMLTag?: string }, ref) => {
+    return forwardRef((props: CssProps & HTMLAttributes<any> & { as?: string }, ref) => {
       return createElement(
-        class HTMLElement extends Component<LayoutProps & PseudoSelectorProps & HTMLAttributes<any> & { HTMLTag?: string, forwardedRef?: ForwardedRef<unknown> }> {
+        class HTMLElement extends Component<LayoutProps & PseudoSelectorProps & HTMLAttributes<any> & { as?: string, forwardedRef?: ForwardedRef<unknown> }> {
           public prevProps: [number, string?, string?];
     
           constructor(props) {
@@ -226,7 +226,7 @@ export const NamedElement = (HTMLTag = "div", className, defaultProps = {}, ref?
       
             const { forwardedRef, ...filteredProps } = test.filteredProps;
             return createElement(
-              HTMLTag || "div",
+              this.props.as || HTMLTag || "div",
               { className: this.prevProps[0] === 1 ? className : `${className}-${this.prevProps[0]-1}`, ref: forwardedRef, ...filteredProps },
               this.props.children
             );
@@ -237,7 +237,7 @@ export const NamedElement = (HTMLTag = "div", className, defaultProps = {}, ref?
       );
     });
   } else {
-    return class HTMLElement extends Component<LayoutProps & PseudoSelectorProps & HTMLAttributes<any> & { HTMLTag?: string, forwardedRef?: ForwardedRef<unknown> }> {
+    return class HTMLElement extends Component<LayoutProps & PseudoSelectorProps & HTMLAttributes<any> & { as?: string, forwardedRef?: ForwardedRef<unknown> }> {
       public prevProps: [number, string?, string?];
   
       constructor(props) {
@@ -272,7 +272,7 @@ export const NamedElement = (HTMLTag = "div", className, defaultProps = {}, ref?
   
         const { forwardedRef, ...filteredProps } = test.filteredProps;
         return createElement(
-          HTMLTag || "div",
+          this.props.as || HTMLTag || "div",
           { className: this.prevProps[0] === 1 ? className : `${className}-${this.prevProps[0]-1}`, ref: forwardedRef, ...filteredProps },
           this.props.children
         );
