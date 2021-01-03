@@ -6,7 +6,7 @@ import { Registry } from "./stylesheet-registry";
 
 const styleSheetRegistry = new Registry();
 
-export const Element = (HTMLTag = "div", ref?) => {
+export const Element = (HTMLTag = "div", defaultProps = {}, ref?) => {
   if (ref) {
     return forwardRef((props: CssProps & HTMLAttributes<any> & { HTMLTag?: string }, ref) => {
       return createElement(
@@ -25,7 +25,7 @@ export const Element = (HTMLTag = "div", ref?) => {
           }
           
           render() {
-            const test = nextStyledSystem(this.props);
+            const test = nextStyledSystem({...defaultProps, ...this.props });
             const currentIds = [...test.styleArray.map(([id]) => id)];
             if (this.prevProps.length === 0 || JSON.stringify(this.prevProps) !== JSON.stringify(currentIds)) {
               
@@ -72,7 +72,7 @@ export const Element = (HTMLTag = "div", ref?) => {
       }
       
       render() {
-        const test = nextStyledSystem(this.props);
+        const test = nextStyledSystem({...defaultProps, ...this.props });
         const currentIds = [...test.styleArray.map(([id]) => id)];
         if (this.prevProps.length === 0 || JSON.stringify(this.prevProps) !== JSON.stringify(currentIds)) {
           
@@ -102,7 +102,7 @@ export const Element = (HTMLTag = "div", ref?) => {
   }
 };
 
-export const VariantElement = (HTMLTag = "div", ref?) => {
+export const VariantElement = (HTMLTag = "div", defaultProps = {}, ref?) => {
   if (ref) {
     return forwardRef((props: CssProps & HTMLAttributes<any> & { HTMLTag?: string }, ref) => {
       return createElement(
@@ -119,7 +119,7 @@ export const VariantElement = (HTMLTag = "div", ref?) => {
           }
           
           render() {
-            const { id, styles, ...test } = nextStyledSystem(this.props);
+            const { id, styles, ...test } = nextStyledSystem({...defaultProps, ...this.props });
             
             if (this.prevProps !== id) {
               
@@ -161,7 +161,7 @@ export const VariantElement = (HTMLTag = "div", ref?) => {
       }
   
       render() {
-        const { id, styles, ...test } = nextStyledSystem(this.props);
+        const { id, styles, ...test } = nextStyledSystem({...defaultProps, ...this.props });
     
         if (this.prevProps !== id) {
       
@@ -187,7 +187,7 @@ export const VariantElement = (HTMLTag = "div", ref?) => {
   }
 };
 
-export const NamedElement = (HTMLTag = "div", className, ref?) => {
+export const NamedElement = (HTMLTag = "div", className, defaultProps = {}, ref?) => {
   if (ref) {
     return forwardRef((props: CssProps & HTMLAttributes<any> & { HTMLTag?: string }, ref) => {
       return createElement(
@@ -204,7 +204,7 @@ export const NamedElement = (HTMLTag = "div", className, ref?) => {
           }
     
           render() {
-            const { id, styles, ...test } = nextStyledSystem(this.props);
+            const { id, styles, ...test } = nextStyledSystem({...defaultProps, ...this.props });
       
             const regex = new RegExp(`.jsx-${id}`,`gi`)
             if (this.prevProps[1] !== id) {
@@ -250,7 +250,7 @@ export const NamedElement = (HTMLTag = "div", className, ref?) => {
       }
   
       render() {
-        const { id, styles, ...test } = nextStyledSystem(this.props);
+        const { id, styles, ...test } = nextStyledSystem({...defaultProps, ...this.props });
         
         const regex = new RegExp(`.jsx-${id}`,`gi`)
         if (this.prevProps[1] !== id) {
