@@ -47,7 +47,7 @@ export const Element = (HTMLTag = "div", defaultProps: LayoutProps & PseudoSelec
             
             return createElement(
               this.props.as || HTMLTag || "div",
-              { className: `${this.props.className} ${cn(test.styleArray.map(([className]) => `${className}`))}`.trim(), ref: forwardedRef, ...filteredProps },
+              { className: `${this.props.className || ''} ${cn(test.styleArray.map(([className]) => `${className}`))}`.trim(), ref: forwardedRef, ...filteredProps },
               this.props.children
             );
           }
@@ -94,7 +94,7 @@ export const Element = (HTMLTag = "div", defaultProps: LayoutProps & PseudoSelec
         
         return createElement(
           this.props.as || HTMLTag || "div",
-          { className: `${this.props.className} ${cn(test.styleArray.map(([className]) => `${className}`))}`.trim(), ref: forwardedRef, ...filteredProps },
+          { className: `${this.props.className || ''} ${cn(test.styleArray.map(([className]) => `${className}`))}`.trim(), ref: forwardedRef, ...filteredProps },
           this.props.children
         );
       }
@@ -138,7 +138,7 @@ export const VariantElement = (HTMLTag = "div", defaultProps: LayoutProps & Pseu
   
             return createElement(
               this.props.as || HTMLTag || "div",
-              { className: `${this.props.className} jsx-${id}`.trim(), ref: forwardedRef, ...filteredProps },
+              { className: `${this.props.className || ''} jsx-${id}`.trim(), ref: forwardedRef, ...filteredProps },
               this.props.children
             );
           }
@@ -179,7 +179,7 @@ export const VariantElement = (HTMLTag = "div", defaultProps: LayoutProps & Pseu
         const { forwardedRef, ...filteredProps } = test.filteredProps;
         return createElement(
           this.props.as || HTMLTag || "div",
-          { className: `${this.props.className} jsx-${id}`.trim(), ref: forwardedRef, ...filteredProps },
+          { className: `${this.props.className || ''} jsx-${id}`.trim(), ref: forwardedRef, ...filteredProps },
           this.props.children
         );
       }
@@ -227,7 +227,7 @@ export const NamedElement = (HTMLTag = "div", className, defaultProps: LayoutPro
             const { forwardedRef, ...filteredProps } = test.filteredProps;
             return createElement(
               this.props.as || HTMLTag || "div",
-              { className: `${this.props.className} ${this.prevProps[0] === 1 ? className : `${className}-${this.prevProps[0]-1}`}`.trim(), ref: forwardedRef, ...filteredProps },
+              { className: `${this.props.className || ''} ${this.prevProps[0] === 1 ? className : `${className}-${this.prevProps[0]-1}`}`.trim(), ref: forwardedRef, ...filteredProps },
               this.props.children
             );
           }
@@ -273,7 +273,7 @@ export const NamedElement = (HTMLTag = "div", className, defaultProps: LayoutPro
         const { forwardedRef, ...filteredProps } = test.filteredProps;
         return createElement(
           this.props.as || HTMLTag || "div",
-          { className: `${this.props.className} ${this.prevProps[0] === 1 ? className : `${className}-${this.prevProps[0]-1}`}`.trim(), ref: forwardedRef, ...filteredProps },
+          { className: `${this.props.className || ''} ${this.prevProps[0] === 1 ? className : `${className}-${this.prevProps[0]-1}`}`.trim(), ref: forwardedRef, ...filteredProps },
           this.props.children
         );
       }
