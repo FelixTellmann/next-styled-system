@@ -1,5 +1,5 @@
 import cn from "classnames";
-import React, { Component, createElement, ForwardedRef, forwardRef, HTMLAttributes, ReactElement } from "react";
+import React, { Component, createElement, ForwardedRef, forwardRef, AllHTMLAttributes, ReactElement } from "react";
 import { CssProps, LayoutProps, nextStyledSystem, PseudoSelectorProps } from "./next-styled-system";
 import { preflightCss } from "./preflight.css";
 import { Registry } from "./stylesheet-registry";
@@ -8,9 +8,9 @@ const styleSheetRegistry = new Registry();
 
 export const Element = (HTMLTag = "div", defaultProps: LayoutProps & PseudoSelectorProps = {}, ref?) => {
   if (ref) {
-    return forwardRef((props: CssProps & HTMLAttributes<any> & { as?: string }, ref) => {
+    return forwardRef((props: CssProps & AllHTMLAttributes<any> & { as?: string }, ref) => {
       return createElement(
-        class HTMLElement extends Component<LayoutProps & PseudoSelectorProps & HTMLAttributes<any> & { as?: string, forwardedRef?: ForwardedRef<unknown> }> {
+        class HTMLElement extends Component<LayoutProps & PseudoSelectorProps & AllHTMLAttributes<any> & { as?: string, forwardedRef?: ForwardedRef<unknown> }> {
           public prevProps: string[];
           
           constructor(props) {
@@ -61,7 +61,7 @@ export const Element = (HTMLTag = "div", defaultProps: LayoutProps & PseudoSelec
       );
     });
   } else {
-    return class HTMLElement extends Component<LayoutProps & PseudoSelectorProps & HTMLAttributes<any> & { as?: string, forwardedRef?: ForwardedRef<unknown> }> {
+    return class HTMLElement extends Component<LayoutProps & PseudoSelectorProps & AllHTMLAttributes<any> & { as?: string, forwardedRef?: ForwardedRef<unknown> }> {
       public prevProps: string[];
       
       constructor(props) {
@@ -112,9 +112,9 @@ export const Element = (HTMLTag = "div", defaultProps: LayoutProps & PseudoSelec
 
 export const VariantElement = (HTMLTag = "div", defaultProps: LayoutProps & PseudoSelectorProps = {}, ref?) => {
   if (ref) {
-    return forwardRef((props: CssProps & HTMLAttributes<any> & { as?: string }, ref) => {
+    return forwardRef((props: CssProps & AllHTMLAttributes<any> & { as?: string }, ref) => {
       return createElement(
-        class HTMLElement extends Component<LayoutProps & PseudoSelectorProps & HTMLAttributes<any> & { as?: string, forwardedRef?: ForwardedRef<unknown> }> {
+        class HTMLElement extends Component<LayoutProps & PseudoSelectorProps & AllHTMLAttributes<any> & { as?: string, forwardedRef?: ForwardedRef<unknown> }> {
           public prevProps: string;
           
           constructor(props) {
@@ -156,7 +156,7 @@ export const VariantElement = (HTMLTag = "div", defaultProps: LayoutProps & Pseu
       );
     });
   } else {
-    return class HTMLElement extends Component<LayoutProps & PseudoSelectorProps & HTMLAttributes<any> & { as?: string, forwardedRef?: ForwardedRef<unknown> }> {
+    return class HTMLElement extends Component<LayoutProps & PseudoSelectorProps & AllHTMLAttributes<any> & { as?: string, forwardedRef?: ForwardedRef<unknown> }> {
       public prevProps: string;
       
       constructor(props) {
@@ -197,9 +197,9 @@ export const VariantElement = (HTMLTag = "div", defaultProps: LayoutProps & Pseu
 
 export const NamedElement = (HTMLTag = "div", className, defaultProps: LayoutProps & PseudoSelectorProps = {}, ref?) => {
   if (ref) {
-    return forwardRef((props: CssProps & HTMLAttributes<any> & { as?: string }, ref) => {
+    return forwardRef((props: CssProps & AllHTMLAttributes<any> & { as?: string }, ref) => {
       return createElement(
-        class HTMLElement extends Component<LayoutProps & PseudoSelectorProps & HTMLAttributes<any> & { as?: string, forwardedRef?: ForwardedRef<unknown> }> {
+        class HTMLElement extends Component<LayoutProps & PseudoSelectorProps & AllHTMLAttributes<any> & { as?: string, forwardedRef?: ForwardedRef<unknown> }> {
           public prevProps: [number, string?, string?];
           
           constructor(props) {
@@ -257,7 +257,7 @@ export const NamedElement = (HTMLTag = "div", className, defaultProps: LayoutPro
       );
     });
   } else {
-    return class HTMLElement extends Component<LayoutProps & PseudoSelectorProps & HTMLAttributes<any> & { as?: string, forwardedRef?: ForwardedRef<unknown> }> {
+    return class HTMLElement extends Component<LayoutProps & PseudoSelectorProps & AllHTMLAttributes<any> & { as?: string, forwardedRef?: ForwardedRef<unknown> }> {
       public prevProps: [number, string?, string?];
       
       constructor(props) {
