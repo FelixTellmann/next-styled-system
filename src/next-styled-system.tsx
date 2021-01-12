@@ -233,8 +233,32 @@ const defaultConfig: ConfigProps = {
   breakpoints: [0, 600, 900, 1200],
   remBase: 10,
   color: {
-    black: "#000",
-    white: "#fff",
+    black: {
+      0:   "rgba(0,0,0,0)",
+      100:  "rgba(0,0,0,0.1)",
+      200:  "rgba(0,0,0,0.2)",
+      300:  "rgba(0,0,0,0.300)",
+      400:  "rgba(0,0,0,0.400)",
+      500:  "rgba(0,0,0,0.500)",
+      600:  "rgba(0,0,0,0.600)",
+      700:  "rgba(0,0,0,0.700)",
+      800:  "rgba(0,0,0,0.800)",      
+      900:  "rgba(0,0,0,0.900)",
+      1:  "rgba(0,0,0,1)"
+    },
+    white: {
+      0:   "rgba(255,255,255,0)",
+      100:  "rgba(255,255,255,0.1)",
+      200:  "rgba(255,255,255,0.2)",
+      300:  "rgba(255,255,255,0.300)",
+      400:  "rgba(255,255,255,0.400)",
+      500:  "rgba(255,255,255,0.500)",
+      600:  "rgba(255,255,255,0.600)",
+      700:  "rgba(255,255,255,0.700)",
+      800:  "rgba(255,255,255,0.800)",      
+      900:  "rgba(255,255,255,0.900)",
+      1:  "rgba(255,255,255,1)"
+    },
     rose: {
       50: "#fff1f2",
       100: "#ffe4e6",
@@ -502,372 +526,6 @@ const defaultConfig: ConfigProps = {
   }
 };
 
-const cssSelectorsOld = {
-  margin: "space",
-  m: {
-    margin: "space"
-  },
-  marginTop: "space",
-  mt: {
-    marginTop: "space"
-  },
-  marginRight: "space",
-  mr: {
-    marginRight: "space"
-  },
-  marginBottom: "space",
-  mb: {
-    marginBottom: "space"
-  },
-  marginLeft: "space",
-  ml: {
-    marginLeft: "space"
-  },
-  marginX: {
-    marginLeft: "space",
-    marginRight: "space"
-  },
-  mx: {
-    marginLeft: "space",
-    marginRight: "space"
-  },
-  marginY: {
-    marginTop: "space",
-    marginBottom: "space"
-  },
-  my: {
-    marginTop: "space",
-    marginBottom: "space"
-  },
-  padding: "space",
-  p: {
-    padding: "space"
-  },
-  paddingTop: "space",
-  pt: {
-    paddingTop: "space"
-  },
-  paddingRight: "space",
-  pr: {
-    paddingRight: "space"
-  },
-  paddingBottom: "space",
-  pb: {
-    paddingBottom: "space"
-  },
-  paddingLeft: "space",
-  pl: {
-    paddingLeft: "space"
-  },
-  paddingX: {
-    paddingLeft: "space",
-    paddingRight: "space"
-  },
-  px: {
-    paddingLeft: "space",
-    paddingRight: "space"
-  },
-  paddingY: {
-    paddingTop: "space",
-    paddingBottom: "space"
-  },
-  py: {
-    paddingTop: "space",
-    paddingBottom: "space"
-  },
-  border: "space",
-  borderWidth: "space",
-  borderColor: "color",
-  borderStyle: "",
-  borderRadius: "space",
-  borderTop: "space",
-  borderTopWidth: "space",
-  borderTopColor: "color",
-  borderTopStyle: "",
-  borderTopLeftRadius: "space",
-  borderTopRightRadius: "space",
-  borderBottom: "space",
-  borderBottomWidth: "space",
-  borderBottomColor: "color",
-  borderBottomStyle: "",
-  borderBottomLeftRadius: "space",
-  borderBottomRightRadius: "space",
-  borderLeft: "space",
-  borderLeftWidth: "space",
-  borderLeftColor: "color",
-  borderLeftStyle: "",
-  borderRight: "space",
-  borderRightWidth: "space",
-  borderRightColor: "",
-  borderRightStyle: "",
-  borderX: {
-    borderLeft: "space",
-    borderRight: "space"
-  },
-  borderXWidth: {
-    borderLeftWidth: "space",
-    borderRightWidth: "space"
-  },
-  borderXColor: {
-    borderLeftColor: "color",
-    borderRightColor: ""
-  },
-  borderXStyle: {
-    borderLeftStyle: "",
-    borderRightStyle: ""
-  },
-  borderY: {
-    borderTop: "space",
-    borderBottom: "space"
-  },
-  borderYWidth: {
-    borderTopWidth: "space",
-    borderBottomWidth: "space"
-  },
-  borderYColor: {
-    borderTopColor: "color",
-    borderBottomColor: "color"
-  },
-  borderYStyle: {
-    borderTopStyle: "",
-    borderBottomStyle: ""
-  },
-  width: "space",
-  w: {
-    width: "space"
-  },
-  height: "space",
-  h: {
-    height: "space"
-  },
-  size: {
-    width: "space",
-    height: "space"
-  },
-  minWidth: "space",
-  minW: {
-    minWidth: "space"
-  },
-  maxWidth: "space",
-  maxW: {
-    maxWidth: "space"
-  },
-  minHeight: "space",
-  minH: {
-    minHeight: "space"
-  },
-  maxHeight: "space",
-  maxH: {
-    maxHeight: "space"
-  },
-  display: "",
-  d: {
-    display: ""
-  },
-  verticalAlign: "",
-  justifyContent: {
-    "-ms-flex-pack": "",
-    "-webkit-box-pack": "",
-    justifyContent: ""
-  },
-  justify: {
-    "-webkit-box-pack": "",
-    "-ms-flex-pack": "",
-    justifyContent: ""
-  },
-  alignItems: {
-    "-ms-flex-align": "",
-    "-webkit-box-align": "",
-    alignItems: ""
-  },
-  align: {
-    "-ms-flex-align": "",
-    "-webkit-box-align": "",
-    alignItems: ""
-  },
-  alignContent: {
-    "-ms-flex-line-pack": "",
-    alignContent: ""
-  },
-  flexDirection: {
-    "-ms-flex-direction": "",
-    "-webkit-box-orient": "",
-    "-webkit-box-direction": "",
-    flexDirection: ""
-  },
-  direction: {
-    "-ms-flex-direction": "",
-    "-webkit-box-orient": "",
-    "-webkit-box-direction": "",
-    flexDirection: ""
-  },
-  flex: {
-    "-mx-flex": "",
-    "webkit-box-flex": "",
-    "webkit-flex": "",
-    flex: ""
-  },
-  flexWrap: {
-    "-ms-flex-wrap": "",
-    flexWrap: ""
-  },
-  wrap: {
-    "-ms-flex-wrap": "",
-    flexWrap: ""
-  },
-  flexBasis: {
-    "-ms-flex-preferred-size": "",
-    "-mx-flex": "",
-    flexBasis: ""
-  },
-  flexGrow: {
-    "-ms-flex-positive": "",
-    "-webkit-box-flex": "",
-    flexGrow: ""
-  },
-  flexShrink: {
-    "-ms-flex-negative": "",
-    flexShrink: ""
-  },
-  alignSelf: {
-    "-ms-grid-row-align": "",
-    alignSelf: ""
-  },
-  justifySelf: {
-    "-ms-grid-column-align": "",
-    justifySelf: ""
-  },
-  order: {
-    "-ms-flex-order": "",
-    "-webkit-box-ordinal-group": "",
-    order: ""
-  },
-  gridGap: "space",
-  gap: { gridGap: `gridGap` },
-  gridRowGap: "space",
-  gridColumnGap: "space",
-  gridColumn: "",
-  gridRow: "",
-  gridArea: "",
-  gridAutoFlow: "",
-  gridAutoRows: "",
-  gridAutoColumns: "",
-  gridTemplateRows: {
-    "-ms-grid-rows": "",
-    gridTemplateRows: ""
-  },
-  gridTemplateColumns: {
-    "-ms-grid-columns": "",
-    gridTemplateColumns: ""
-  },
-  gridTemplateAreas: "",
-  position: "",
-  top: "space",
-  right: "space",
-  bottom: "space",
-  left: "space",
-  zIndex: "zIndices",
-  overflow: "",
-  overflowX: "",
-  overflowY: "",
-  color: "color",
-  background: "color",
-  bg: {
-    background: "color"
-  },
-  opacity: "",
-  backgroundAttachment: "",
-  backgroundClip: {
-    "-webkit-background-clip": "",
-    backgroundClip: ""
-  },
-  backgroundColor: "color",
-  bgc: { backgroundColor: "color" },
-  backgroundImage: "",
-  backgroundOrigin: "",
-  backgroundPositionX: "space",
-  backgroundPositionY: "space",
-  backgroundSize: "space",
-  backdropFilter: {
-    "-webkit-backdropFilter": "",
-    backdropFilter: ""
-  },
-  boxShadow: {
-    "-webkit-box-shadow": "",
-    boxShadow: ""
-  },
-  outline: "",
-  outlineColor: "color",
-  outlineOffset: "space",
-  outlineStyle: "",
-  outlineWidth: "space",
-  visibility: "",
-  fontFamily: "",
-  fontSize: "fontSize",
-  fz: { fontSize: "fontSize" },
-  fontWeight: "",
-  fw: { fontWeight: "fontWeight" },
-  lineHeight: "",
-  letterSpacing: "",
-  textAlign: "",
-  fontStyle: "",
-  textDecoration: "",
-  textTransform: "",
-  textShadow: "",
-  whiteSpace: "",
-  wordWrap: "",
-  wordBreak: "",
-  fill: "",
-  filter: {
-    "-webkit-filter": "",
-    filter: ""
-  },
-  stroke: "",
-  transition: {
-    "-o-transition": "",
-    "-webkit-transition": "",
-    transition: ""
-  },
-  transitionDelay: {
-    "-webkit-transition-delay": ``,
-    transitionDelay: ""
-  },
-  transitionDuration: {
-    "-webkit-transition-duration": ``,
-    transitionDuration: ""
-  },
-  TransitionProperty: {
-    "-webkit-transition-property": ``,
-    TransitionProperty: ""
-  },
-  TransitionTimingFunction: {
-    "-webkit-transition-timing-function": ``,
-    TransitionTimingFunction: ""
-  },
-  transform: {
-    "-ms-transform": "",
-    "-webkit-transform": "",
-    transform: ""
-  },
-  cursor: "",
-  resize: "",
-  objectFit: {
-    "-o-object-fit": "",
-    objectFit: ""
-  },
-  userSelect: {
-    "-webkit-user-select": "",
-    "-moz-user-select": "",
-    "-ms-user-select": "",
-    userSelect: ""
-  },
-  appearance: {
-    "-webkit-appearance": "",
-    appearance: ""
-  },
-  pointerEvents: "",
-  content: ""
-};
 const cssSelectors = {
   "margin": ["space", [`m`]],
   "m": [{ "margin": "space" }, [`m`]],
@@ -984,7 +642,7 @@ const cssSelectors = {
   "overflow": [""],
   "overflowX": [""],
   "overflowY": [""],
-  "color": ["color"],
+  "color": ["color", [`c`]],
   "background": ["color", [`bg`]],
   "bg": [{ "background": "color" }, [`bg`]],
   "opacity": [""],
@@ -1091,8 +749,13 @@ function parseCssVariables(val: string | number) {
   return val.toString().replace(/^--.+/, (match) => `var(${match})`).replace(/^$/, "''");
 }
 
-function parseCssSizes(val: number | string, type: "" | "fontSize" | "space", { remBase, ...cfg }): string {
+function parseCssSizes(val: number | string, type: "" | "fontSize" | "space" | "color", { remBase, ...cfg }): string {
   
+  if (typeof val === "string" && type === 'color') {
+      if (cfg[type][val.split('.')[0]] && cfg[type][val.split('.')[0]][val.split('.')[1]]) {
+        return cfg[type][val.split('.')[0]][val.split('.')[1]];
+      }
+  }
   if (typeof val === "string") {
     return val.replace(/([\d.]+)px/gi, (match) => `${parseFloat(match) / remBase}rem`);
   }
@@ -1112,7 +775,7 @@ function getResponsiveValue(val: string | number | (string | number)[], bp: numb
   return val[val.length - 1 >= bp ? bp : val.length - 1];
 }
 
-function toCssValue(key: "" | "fontSize" | "space" | "content", val: string | number, cfg): string {
+function toCssValue(key: "" | "fontSize" | "space" | "color" | "content", val: string | number, cfg): string {
   if (key === "content") return `"${val}"`;
   if (cfg[key]) {
     return parseCssVariables(parseCssSizes(val, key, cfg));
@@ -1194,10 +857,22 @@ function getClassName(key, val, bp, pseudo, config) {
   const cssValue = toCssValue(typeof cssSelectors[key][0] === "string"
                               ? cssSelectors[key][0]
                               : cssSelectors[key][0][Object.keys(cssSelectors[key][0])[0]], getResponsiveValue(val, bp), config).split(" ");
-  const cleanCssValue = cssValue.map(val => val.match(/rem$/)
+  let cleanCssValue = cssValue.map(val => val.match(/rem$/)
                                             ? String(+val.replace(/rem$/, "") * 10)
                                             : val).join("-").replace(/\s/g, "-").replace(/[!&\/\\#,+()$~%.'":*?<>{}]/g, "");
-  return `${pseudo ? `${pseudo}-` : ""}${bp > 0 ? `bp${bp}-` : ""}${cssSelectors[key][1] ? cssSelectors[key][1][0] : key}-${cleanCssValue}`;
+  
+  
+  let className = cssSelectors[key][1] ? cssSelectors[key][1][0] : key
+  let responsive = bp > 0 ? `bp${bp}-` : ""
+  let pseudoSelector = pseudo ? `${pseudo}-` : ""
+  if (cssSelectors[key][0] === 'color'
+    && typeof val === "string"
+    && config[cssSelectors[key][0]][val.split('.')[0]]
+    && config[cssSelectors[key][0]][val.split('.')[0]][val.split('.')[1]]) {
+    cleanCssValue = val.replace('.','')
+  }
+  
+  return `${pseudoSelector}${responsive}${className}-${cleanCssValue}`;
 }
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
@@ -1207,6 +882,8 @@ export function nextStyledSystem(props: any, config: ConfigProps = {}): { id?: s
   if (!("remBase" in config)) config.remBase = defaultConfig.remBase;
   if (!("space" in config)) config.space = defaultConfig.space;
   if (!("fontSize" in config)) config.fontSize = defaultConfig.fontSize;
+  if (!("color" in config)) config.color = defaultConfig.color;
+  
   const { breakpoints } = config;
   
   const filteredProps = /*useMemo(() => */Object.entries(props).reduce((a, [k, v]) => {
