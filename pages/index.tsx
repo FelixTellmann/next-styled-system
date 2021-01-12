@@ -15,7 +15,7 @@ export const Index: FC<IndexProps> = ({}) => {
   
   return <>
     <H1 p={test} fz={40} onClick={() => { setTest(test+1) }}>Hello</H1>
-    <H2 p={test} fz={40}>Hello</H2>
+    <H2 className={'red'} p={test} fz={40}>Hello</H2>
     <H3 p={test2} fz={40} onClick={() => { setTest2(test2+1) }}>Hello</H3>
   </>;
   
