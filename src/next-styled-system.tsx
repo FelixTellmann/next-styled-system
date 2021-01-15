@@ -750,8 +750,8 @@ function parseCssVariables(val: string | number) {
 }
 
 function parseCssSizes(val: number | string, type: "" | "fontSize" | "space" | "color", { remBase, ...cfg }): string {
-  
   if (typeof val === "string" && type === 'color') {
+    val = val.toLowerCase()
       if (cfg[type][val.split('.')[0]] && cfg[type][val.split('.')[0]][val.split('.')[1]]) {
         return cfg[type][val.split('.')[0].toLowerCase()][val.split('.')[1]];
       }
@@ -865,7 +865,7 @@ function getClassName(key, val, bp, pseudo, config) {
   let className = cssSelectors[key][1] ? cssSelectors[key][1][0] : key
   let responsive = bp > 0 ? `bp${bp}-` : ""
   let pseudoSelector = pseudo ? `${pseudo}-` : ""
-  if (cssSelectors[key][0] === 'color'
+  if (cssSelectors[key][0] === "color"
     && typeof val === "string"
     && config[cssSelectors[key][0]][val.split('.')[0].toLowerCase()]
     && config[cssSelectors[key][0]][val.split('.')[0].toLowerCase()][val.split('.')[1]]) {

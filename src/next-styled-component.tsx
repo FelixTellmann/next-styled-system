@@ -1,5 +1,5 @@
 import cn from "classnames";
-import React, { Component, createElement, ForwardedRef, forwardRef, AllHTMLAttributes, ReactElement } from "react";
+import React, { AllHTMLAttributes, Component, createElement, ForwardedRef, forwardRef, ReactElement } from "react";
 import { CssProps, LayoutProps, nextStyledSystem, PseudoSelectorProps } from "./next-styled-system";
 import { preflightCss } from "./preflight.css";
 import { Registry } from "./stylesheet-registry";
@@ -8,52 +8,128 @@ const styleSheetRegistry = new Registry();
 
 export const Element = (HTMLTag = "div", defaultProps: LayoutProps & PseudoSelectorProps = {}, ref?) => {
   if (ref) {
-    return forwardRef((props: CssProps & AllHTMLAttributes<any> & { as?: string }, ref) => {
+    return forwardRef((props: CssProps & AllHTMLAttributes<any> & { as?: string, useJsx?: boolean, useClass?: string, forwardedRef?: ForwardedRef<unknown> }, ref) => {
       return createElement(
-        class HTMLElement extends Component<LayoutProps & PseudoSelectorProps & AllHTMLAttributes<any> & { as?: string, forwardedRef?: ForwardedRef<unknown> }> {
-          public prevProps: string[];
+        class HTMLElement extends Component<LayoutProps & PseudoSelectorProps & AllHTMLAttributes<any> & { as?: string, useJsx?: boolean, useClass?: string, forwardedRef?: ForwardedRef<unknown> }> {
+          public prevProps: string[] | string | [number, string?, string?];
           
           constructor(props) {
             super(props);
-            this.prevProps = [];
+            this.prevProps = undefined;
           }
           
           componentWillUnmount() {
-            this.prevProps.forEach(id => {
-              styleSheetRegistry.remove({ id });
-            });
+            if (this.props.useJsx) {
+              styleSheetRegistry.remove({ id: this.prevProps });
+            }
+            
+            if (this.props.useClass) {
+              styleSheetRegistry.remove({ id: this.prevProps });
+            }
+            
+            if (!this.props.useJsx && !this.props.useClass && Array.isArray(this.prevProps)) {
+              this.prevProps.forEach(id => {
+                styleSheetRegistry.remove({ id });
+              });
+            }
           }
           
           render() {
-            const test = nextStyledSystem({ ...defaultProps, ...this.props });
-            const currentIds = [...test.styleArray.map(([id]) => id)];
-            if (this.prevProps.length === 0 || JSON.stringify(this.prevProps) !== JSON.stringify(currentIds)) {
-              
-              this.prevProps.forEach(id => {
-                if (!currentIds.includes(id)) {
-                  styleSheetRegistry.remove({ id });
+            const { styleArray, id, styles, filteredProps } = nextStyledSystem({ ...defaultProps, ...this.props });
+            const currentIds = [...styleArray.map(([id]) => id)];
+            
+            /*= =============== useJsx ================ */
+            if (this.props.useJsx) {
+              if (this.prevProps !== id) {
+                
+                if (this.prevProps && this.prevProps !== id) {
+                  styleSheetRegistry.remove({ id: this.prevProps });
                 }
-              });
-              
-              test.styleArray.forEach(([className, style]) => {
-                if (!this.prevProps.includes(className)) {
-                  styleSheetRegistry.add({ id: className, children: style });
+                
+                if (this.prevProps !== id) {
+                  styleSheetRegistry.add({ id, children: styles });
                 }
-              });
-              this.prevProps = currentIds;
+                
+                this.prevProps = id;
+              }
+              
+              const { forwardedRef, ...otherProps } = filteredProps;
+              
+              return createElement(
+                this.props.as || HTMLTag || "div",
+                { ...otherProps, className: cn(this.props.className, `jsx-${id}`) || undefined, ref: forwardedRef },
+                this.props.children
+              );
             }
             
-            const { forwardedRef, ...filteredProps } = test.filteredProps;
+            /*= =============== useClass ================ */
+            if (this.props.useClass) {
+              const regex = new RegExp(`.jsx-${id}`, `gi`);
+              if (this.prevProps[1] !== id) {
+                if (this.prevProps[0] === 0) {
+                  styleSheetRegistry.add({ id: this.props.useClass, children: styles.replace(regex, `.${this.props.useClass}`) });
+                  this.prevProps = [+this.prevProps[0] + 1, id, this.props.useClass];
+                } else {
+                  if (this.prevProps[0] !== 1) {
+                    styleSheetRegistry.remove({
+                      id: `${this.props.useClass}-${+this.prevProps[0] - 1}`,
+                      children: styles.replace(regex, `.${this.props.useClass}-${+this.prevProps[0] - 1}`)
+                    });
+                  }
+                  styleSheetRegistry.add({
+                    id: `${this.props.useClass}-${this.prevProps[0]}`,
+                    children: styles.replace(regex, `.${this.props.useClass}-${this.prevProps[0]}`)
+                  });
+                  this.prevProps = [+this.prevProps[0] + 1, id, `${this.props.useClass}-${this.prevProps[0]}`];
+                }
+              }
+              
+              const { forwardedRef, ...otherProps } = filteredProps;
+              return createElement(
+                this.props.as || HTMLTag || "div",
+                {
+                  ...otherProps,
+                  className: cn(this.props.className, this.prevProps[0] === 1
+                                                      ? this.props.useClass
+                                                      : `${this.props.useClass}-${+this.prevProps[0] - 1}`) || undefined,
+                  ref: forwardedRef
+                },
+                this.props.children
+              );
+            }
             
-            return createElement(
-              this.props.as || HTMLTag || "div",
-              {
-                ...filteredProps,
-                className: cn(this.props.className, ...test.styleArray.map(([className]) => `${className}`)) || undefined,
-                ref: forwardedRef
-              },
-              this.props.children
-            );
+            /*= =============== default: tailwind style ================ */
+            if (!this.props.useJsx && !this.props.useClass && Array.isArray(this.prevProps)) {
+              if (this.prevProps.length === 0 || JSON.stringify(this.prevProps) !== JSON.stringify(currentIds)) {
+                if (!Array.isArray(this.prevProps)) {
+                  this.prevProps = [];
+                }
+                this.prevProps.forEach(id => {
+                  if (!currentIds.includes(id)) {
+                    styleSheetRegistry.remove({ id });
+                  }
+                });
+                
+                styleArray.forEach(([className, style]) => {
+                  if (!this.prevProps.includes(className)) {
+                    styleSheetRegistry.add({ id: className, children: style });
+                  }
+                });
+                this.prevProps = currentIds;
+              }
+              
+              const { forwardedRef, ...otherProps } = filteredProps;
+              
+              return createElement(
+                this.props.as || HTMLTag || "div",
+                {
+                  ...otherProps,
+                  className: cn(this.props.className, ...styleArray.map(([className]) => `${className}`)) || undefined,
+                  ref: forwardedRef
+                },
+                this.props.children
+              );
+            }
           }
         },
         { forwardedRef: ref, ...props },
@@ -61,8 +137,8 @@ export const Element = (HTMLTag = "div", defaultProps: LayoutProps & PseudoSelec
       );
     });
   } else {
-    return class HTMLElement extends Component<LayoutProps & PseudoSelectorProps & AllHTMLAttributes<any> & { as?: string, forwardedRef?: ForwardedRef<unknown> }> {
-      public prevProps: string[];
+    return class HTMLElement extends Component<LayoutProps & PseudoSelectorProps & AllHTMLAttributes<any> & { as?: string, useJsx?: boolean, useClass?: string, forwardedRef?: ForwardedRef<unknown> }> {
+      public prevProps: string[] | string | [number, string?, string?];
       
       constructor(props) {
         super(props);
@@ -70,46 +146,123 @@ export const Element = (HTMLTag = "div", defaultProps: LayoutProps & PseudoSelec
       }
       
       componentWillUnmount() {
-        this.prevProps.forEach(id => {
-          styleSheetRegistry.remove({ id });
-        });
-      }
-      
-      render() {
-        const test = nextStyledSystem({ ...defaultProps, ...this.props });
-        const currentIds = [...test.styleArray.map(([id]) => id)];
-        if (this.prevProps.length === 0 || JSON.stringify(this.prevProps) !== JSON.stringify(currentIds)) {
-          
-          this.prevProps.forEach(id => {
-            if (!currentIds.includes(id)) {
-              styleSheetRegistry.remove({ id });
-            }
-          });
-          
-          test.styleArray.forEach(([className, style]) => {
-            if (!this.prevProps.includes(className)) {
-              styleSheetRegistry.add({ id: className, children: style });
-            }
-          });
-          this.prevProps = currentIds;
+        if (this.props.useJsx) {
+          styleSheetRegistry.remove({ id: this.prevProps });
         }
         
-        const { forwardedRef, ...filteredProps } = test.filteredProps;
+        if (this.props.useClass) {
+          styleSheetRegistry.remove({ id: this.prevProps });
+        }
         
-        return createElement(
-          this.props.as || HTMLTag || "div",
-          {
-            ...filteredProps,
-            className: cn(this.props.className, ...test.styleArray.map(([className]) => `${className}`)) || undefined,
-            ref: forwardedRef
-          },
-          this.props.children
-        );
+        if (!this.props.useJsx && !this.props.useClass && Array.isArray(this.prevProps)) {
+          this.prevProps.forEach(id => {
+            styleSheetRegistry.remove({ id });
+          });
+        }
+      }
+  
+      render() {
+        const { styleArray, id, styles, filteredProps } = nextStyledSystem({ ...defaultProps, ...this.props });
+        const currentIds = [...styleArray.map(([id]) => id)];
+    
+        /*= =============== useJsx ================ */
+        if (this.props.useJsx) {
+          if (this.prevProps !== id) {
+        
+            if (this.prevProps && this.prevProps !== id) {
+              styleSheetRegistry.remove({ id: this.prevProps });
+            }
+        
+            if (this.prevProps !== id) {
+              styleSheetRegistry.add({ id, children: styles });
+            }
+        
+            this.prevProps = id;
+          }
+      
+          const { forwardedRef, ...otherProps } = filteredProps;
+      
+          return createElement(
+            this.props.as || HTMLTag || "div",
+            { ...otherProps, className: cn(this.props.className, `jsx-${id}`) || undefined, ref: forwardedRef },
+            this.props.children
+          );
+        }
+    
+        /*= =============== useClass ================ */
+        if (this.props.useClass) {
+          const regex = new RegExp(`.jsx-${id}`, `gi`);
+          if (this.prevProps[1] !== id) {
+            if (this.prevProps[0] === 0) {
+              styleSheetRegistry.add({ id: this.props.useClass, children: styles.replace(regex, `.${this.props.useClass}`) });
+              this.prevProps = [+this.prevProps[0] + 1, id, this.props.useClass];
+            } else {
+              if (this.prevProps[0] !== 1) {
+                styleSheetRegistry.remove({
+                  id: `${this.props.useClass}-${+this.prevProps[0] - 1}`,
+                  children: styles.replace(regex, `.${this.props.useClass}-${+this.prevProps[0] - 1}`)
+                });
+              }
+              styleSheetRegistry.add({
+                id: `${this.props.useClass}-${this.prevProps[0]}`,
+                children: styles.replace(regex, `.${this.props.useClass}-${this.prevProps[0]}`)
+              });
+              this.prevProps = [+this.prevProps[0] + 1, id, `${this.props.useClass}-${this.prevProps[0]}`];
+            }
+          }
+      
+          const { forwardedRef, ...otherProps } = filteredProps;
+          return createElement(
+            this.props.as || HTMLTag || "div",
+            {
+              ...otherProps,
+              className: cn(this.props.className, this.prevProps[0] === 1
+                                                  ? this.props.useClass
+                                                  : `${this.props.useClass}-${+this.prevProps[0] - 1}`) || undefined,
+              ref: forwardedRef
+            },
+            this.props.children
+          );
+        }
+    
+        /*= =============== default: tailwind style ================ */
+        if (!this.props.useJsx && !this.props.useClass && Array.isArray(this.prevProps)) {
+          if (this.prevProps.length === 0 || JSON.stringify(this.prevProps) !== JSON.stringify(currentIds)) {
+            if (!Array.isArray(this.prevProps)) {
+              this.prevProps = [];
+            }
+            this.prevProps.forEach(id => {
+              if (!currentIds.includes(id)) {
+                styleSheetRegistry.remove({ id });
+              }
+            });
+        
+            styleArray.forEach(([className, style]) => {
+              if (!this.prevProps.includes(className)) {
+                styleSheetRegistry.add({ id: className, children: style });
+              }
+            });
+            this.prevProps = currentIds;
+          }
+      
+          const { forwardedRef, ...otherProps } = filteredProps;
+      
+          return createElement(
+            this.props.as || HTMLTag || "div",
+            {
+              ...otherProps,
+              className: cn(this.props.className, ...styleArray.map(([className]) => `${className}`)) || undefined,
+              ref: forwardedRef
+            },
+            this.props.children
+          );
+        }
       }
     };
   }
 };
 
+/*
 export const VariantElement = (HTMLTag = "div", defaultProps: LayoutProps & PseudoSelectorProps = {}, ref?) => {
   if (ref) {
     return forwardRef((props: CssProps & AllHTMLAttributes<any> & { as?: string }, ref) => {
@@ -127,7 +280,7 @@ export const VariantElement = (HTMLTag = "div", defaultProps: LayoutProps & Pseu
           }
           
           render() {
-            const { id, styles, ...test } = nextStyledSystem({ ...defaultProps, ...this.props });
+            const { id, styles, filteredProps } = nextStyledSystem({ ...defaultProps, ...this.props });
             
             if (this.prevProps !== id) {
               
@@ -142,11 +295,11 @@ export const VariantElement = (HTMLTag = "div", defaultProps: LayoutProps & Pseu
               this.prevProps = id;
             }
             
-            const { forwardedRef, ...filteredProps } = test.filteredProps;
+            const { forwardedRef, ...otherProps } = filteredProps;
             
             return createElement(
               this.props.as || HTMLTag || "div",
-              { ...filteredProps, className: cn(this.props.className, `jsx-${id}`) || undefined, ref: forwardedRef },
+              { ...otherProps, className: cn(this.props.className, `jsx-${id}`) || undefined, ref: forwardedRef },
               this.props.children
             );
           }
@@ -169,7 +322,7 @@ export const VariantElement = (HTMLTag = "div", defaultProps: LayoutProps & Pseu
       }
       
       render() {
-        const { id, styles, ...test } = nextStyledSystem({ ...defaultProps, ...this.props });
+        const { id, styles, filteredProps, ...test } = nextStyledSystem({ ...defaultProps, ...this.props });
         
         if (this.prevProps !== id) {
           
@@ -184,10 +337,10 @@ export const VariantElement = (HTMLTag = "div", defaultProps: LayoutProps & Pseu
           this.prevProps = id;
         }
         
-        const { forwardedRef, ...filteredProps } = test.filteredProps;
+        const { forwardedRef, ...otherProps } = filteredProps;
         return createElement(
           this.props.as || HTMLTag || "div",
-          { ...filteredProps, className: cn(this.props.className, `jsx-${id}`) || undefined, ref: forwardedRef },
+          { ...otherProps, className: cn(this.props.className, `jsx-${id}`) || undefined, ref: forwardedRef },
           this.props.children
         );
       }
@@ -311,7 +464,7 @@ export const NamedElement = (HTMLTag = "div", className, defaultProps: LayoutPro
       }
     };
   }
-};
+};*/
 
 export function flushToReact(options: { nonce?: string; } = {}): Array<ReactElement> {
   const css = styleSheetRegistry.cssRules();
