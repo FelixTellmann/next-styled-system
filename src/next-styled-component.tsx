@@ -41,8 +41,7 @@ export const Element = (HTMLTag = "div", defaultProps: LayoutProps & PseudoSelec
             /*= =============== useJsx ================ */
             if (this.props.useJsx) {
               if (this.prevProps !== id) {
-                
-                if (this.prevProps && this.prevProps !== id) {
+                if (!Array.isArray(this.prevProps) && this.prevProps && this.prevProps !== id) {
                   styleSheetRegistry.remove({ id: this.prevProps });
                 }
                 
@@ -64,6 +63,9 @@ export const Element = (HTMLTag = "div", defaultProps: LayoutProps & PseudoSelec
             
             /*= =============== useClass ================ */
             if (this.props.useClass) {
+              if (this.prevProps.length === 0) {
+                this.prevProps = [0, "", ""];
+              }
               const regex = new RegExp(`.jsx-${id}`, `gi`);
               if (this.prevProps[1] !== id) {
                 if (this.prevProps[0] === 0) {
@@ -160,37 +162,39 @@ export const Element = (HTMLTag = "div", defaultProps: LayoutProps & PseudoSelec
           });
         }
       }
-  
+      
       render() {
         const { styleArray, id, styles, filteredProps } = nextStyledSystem({ ...defaultProps, ...this.props });
         const currentIds = [...styleArray.map(([id]) => id)];
-    
+        
         /*= =============== useJsx ================ */
         if (this.props.useJsx) {
           if (this.prevProps !== id) {
-        
-            if (this.prevProps && this.prevProps !== id) {
+            if (!Array.isArray(this.prevProps) && this.prevProps && this.prevProps !== id) {
               styleSheetRegistry.remove({ id: this.prevProps });
             }
-        
+            
             if (this.prevProps !== id) {
               styleSheetRegistry.add({ id, children: styles });
             }
-        
+            
             this.prevProps = id;
           }
-      
+          
           const { forwardedRef, ...otherProps } = filteredProps;
-      
+          
           return createElement(
             this.props.as || HTMLTag || "div",
             { ...otherProps, className: cn(this.props.className, `jsx-${id}`) || undefined, ref: forwardedRef },
             this.props.children
           );
         }
-    
+        
         /*= =============== useClass ================ */
         if (this.props.useClass) {
+          if (this.prevProps.length === 0) {
+            this.prevProps = [0, "", ""];
+          }
           const regex = new RegExp(`.jsx-${id}`, `gi`);
           if (this.prevProps[1] !== id) {
             if (this.prevProps[0] === 0) {
@@ -210,7 +214,7 @@ export const Element = (HTMLTag = "div", defaultProps: LayoutProps & PseudoSelec
               this.prevProps = [+this.prevProps[0] + 1, id, `${this.props.useClass}-${this.prevProps[0]}`];
             }
           }
-      
+          
           const { forwardedRef, ...otherProps } = filteredProps;
           return createElement(
             this.props.as || HTMLTag || "div",
@@ -224,7 +228,7 @@ export const Element = (HTMLTag = "div", defaultProps: LayoutProps & PseudoSelec
             this.props.children
           );
         }
-    
+        
         /*= =============== default: tailwind style ================ */
         if (!this.props.useJsx && !this.props.useClass && Array.isArray(this.prevProps)) {
           if (this.prevProps.length === 0 || JSON.stringify(this.prevProps) !== JSON.stringify(currentIds)) {
@@ -236,7 +240,7 @@ export const Element = (HTMLTag = "div", defaultProps: LayoutProps & PseudoSelec
                 styleSheetRegistry.remove({ id });
               }
             });
-        
+            
             styleArray.forEach(([className, style]) => {
               if (!this.prevProps.includes(className)) {
                 styleSheetRegistry.add({ id: className, children: style });
@@ -244,9 +248,9 @@ export const Element = (HTMLTag = "div", defaultProps: LayoutProps & PseudoSelec
             });
             this.prevProps = currentIds;
           }
-      
+          
           const { forwardedRef, ...otherProps } = filteredProps;
-      
+          
           return createElement(
             this.props.as || HTMLTag || "div",
             {

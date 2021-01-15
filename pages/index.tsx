@@ -1,5 +1,5 @@
 import { FC, useState } from "react";
-import { NamedElement, VariantElement,Element } from "../src";
+import { Element } from "../src";
 
 
 const H2 = Element('h2')
