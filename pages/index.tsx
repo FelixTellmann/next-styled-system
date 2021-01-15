@@ -20,6 +20,7 @@ export const Index: FC<IndexProps> = ({}) => {
     <H2 useJsx className={'red'}  fz={40} color={`Blue.${test}`} p={20}>Hello</H2>
     <H2 className={'red'}  fz={40} color={`yellow.${test}`}>Hello</H2>
     <H2 className={'red'}  fz={40} color={`pink.${test}`}>Hello</H2>
+    <H2>Hello</H2>
     <H2 p={test2} fz={40} onClick={() => { setTest2(test2+1) }}>Hello</H2>
   </>;
   

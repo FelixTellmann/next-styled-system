@@ -181,7 +181,7 @@ export const Element = (HTMLTag = "div", defaultProps: LayoutProps & PseudoSelec
             this.prevProps = id;
           }
           
-          const { forwardedRef, ...otherProps } = filteredProps;
+          const { useJsx, useClass, forwardedRef, ...otherProps } = filteredProps;
           
           return createElement(
             this.props.as || HTMLTag || "div",
@@ -215,7 +215,7 @@ export const Element = (HTMLTag = "div", defaultProps: LayoutProps & PseudoSelec
             }
           }
           
-          const { forwardedRef, ...otherProps } = filteredProps;
+          const { useJsx, useClass, forwardedRef, ...otherProps } = filteredProps;
           return createElement(
             this.props.as || HTMLTag || "div",
             {
