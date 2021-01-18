@@ -854,6 +854,8 @@ function createSingleStyle([key, val]: any, breakpoint = 0, cfg: ConfigProps): s
 }
 
 function getClassName(key, val, bp, pseudo, config) {
+  if (key === 'selector') return '';
+  
   const cssValue = toCssValue(typeof cssSelectors[key][0] === "string"
                               ? cssSelectors[key][0]
                               : cssSelectors[key][0][Object.keys(cssSelectors[key][0])[0]], getResponsiveValue(val, bp), config).split(" ");
