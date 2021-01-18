@@ -174,7 +174,6 @@ export type LayoutProps = {
 }
 
 export type PseudoSelectorProps = {
-  _forwardSelector?: { selector: string } & LayoutProps,
   _hf?: LayoutProps,
   _hfa?: LayoutProps,
   _hfaa?: LayoutProps,
@@ -698,7 +697,6 @@ const cssSelectors = {
 };
 
 const pseudoSelectors = {
-  _forwardSelector: `& ~`,
   _hf: `&:hover, &[data-hover], &:focus, &[data-focus]`,
   _hfa: `&:hover, &[data-hover], &:focus, &[data-focus], &:active, &[data-active]`,
   _hfaa: `&:hover, &[data-hover], &:focus, &[data-focus], &:active, &[data-active], &.active`,
@@ -918,6 +916,8 @@ export function nextStyledSystem(props: any, config: ConfigProps = {}): { id?: s
           : ""}${pseudoSelectors[k]}{${createStyleString(v, i, config)}}${i !== 0 ? `}` : ""}`).join("")).join("");
   
   const styles = [];
+  const id = (base + pseudo) !== "" ? String(hashString(base + pseudo)) : undefined;
+  let style = (base + pseudo).replace(/&/g, `.jsx-${id}`);
   
   /*= =============== Create Styles & Classes - CSS Selectors ================ */
   Object.entries(cssProps).forEach(([key, val]: [string, string | number | (string | number)[]]) => {
@@ -942,6 +942,7 @@ export function nextStyledSystem(props: any, config: ConfigProps = {}): { id?: s
   
   /*= =============== Create Styles & Classes - PSEUDO SELECTORS ================ */
   Object.entries(pseudoProps).forEach(([k, v]) => {
+    
     Object.entries(v).forEach(([key, val]) => {
       const style = createSingleStyle([key, val], 0, config);
       const className = getClassName(key, val, 0, k, config);
@@ -966,13 +967,6 @@ export function nextStyledSystem(props: any, config: ConfigProps = {}): { id?: s
       }
     });
   });
-  
-  const id = (base + pseudo) !== "" ? String(hashString(base + pseudo)) : undefined;
-  let style = (base + pseudo).replace(/&/g, `.jsx-${id}`);
-  
-  if (props._forwardSelector && props._forwardSelector.selector) {
-    style = style.replace(/~/g, props._forwardSelector.selector);
-  }
   
   return { id: id || undefined, styles: id ? style : undefined, styleArray: styles, filteredProps };
 }
