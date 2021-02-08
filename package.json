@@ -16,6 +16,8 @@
     "build": "rimraf dist && microbundle -o dist/ --jsx --sourcemap false --target web"
   },
   "dependencies": {
+    "@babel/helper-builder-react-jsx": "^7.12.13",
+    "@babel/helper-builder-react-jsx-experimental": "^7.12.11",
     "@babel/plugin-proposal-class-properties": "^7.12.1",
     "@babel/plugin-proposal-object-rest-spread": "^7.12.1",
     "@babel/plugin-transform-typescript": "^7.12.1",
@@ -29,7 +31,7 @@
     "babel-eslint": "^10.1.0",
     "babel-plugin-react-require": "^3.1.3",
     "classnames": "^2.2.6",
-    "next": "^10.0.4",
+    "next": "^10.0.6",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "string-hash": "^1.1.3",
@@ -37,7 +39,7 @@
     "typescript": "^4.1.3"
   },
   "devDependencies": {
-    "microbundle": "^0.12.4",
+    "microbundle": "^0.13.0",
     "rimraf": "^3.0.2"
   }
 }
