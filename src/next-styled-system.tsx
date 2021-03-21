@@ -710,7 +710,7 @@ const pseudoSelectors = {
   _after: "&::after",
   _autofill: "&:-webkit-autofill",
   _before: "&::before",
-  _checked: "&[aria-checked=true], &[data-checked]",
+  _checked: "&[aria-checked=true], &[data-checked], &:checked",
   _empty: "&:empty",
   _even: "&:nth-of-type(even)",
   _expanded: "&[aria-expanded=true], &[data-expanded]",
