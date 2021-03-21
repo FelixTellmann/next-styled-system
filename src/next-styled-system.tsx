@@ -68,7 +68,7 @@ export type LayoutProps = {
   w?: (CSS.Width | number) | (CSS.Width | number)[];
   height?: (CSS.Height | number) | (CSS.Height | number)[];
   h?: (CSS.Height | number) | (CSS.Height | number)[];
-  /*size?: (CSS.Width | number) | (CSS.Width | number)[];*/
+  size?: (CSS.Width | number) | (CSS.Width | number)[];
   minWidth?: (CSS.MinWidth | number) | (CSS.MinWidth | number)[];
   minW?: (CSS.MinWidth | number) | (CSS.MinWidth | number)[];
   maxWidth?: (CSS.MaxWidth | number) | (CSS.MaxWidth | number)[];
@@ -591,7 +591,7 @@ const cssSelectors = {
   w: [{ width: "space" }, [`w`]],
   height: ["space", [`h`]],
   h: [{ height: "space" }, [`h`]],
-  /*size: [{ width: "space", height: "space" }, [`s`]],*/
+  size: [{ width: "space", height: "space" }, [`s`]],
   minWidth: ["space", [`minw`]],
   minW: [{ minWidth: "space" }, [`minw`]],
   maxWidth: ["space", [`maxw`]],
@@ -900,6 +900,9 @@ export function nextStyledSystem(
   const { breakpoints } = config;
 
   const filteredProps = /*useMemo(() => */ Object.entries(props).reduce((acc, [k, v]) => {
+    if (k === "htmlSize" || k === "htmlWidth" || k === "htmlHeight") {
+      return { ...acc, [k.replace(/^html/, "").toLowerCase()]: v };
+    }
     if (cssSelectors[k] === undefined && pseudoSelectors[k] === undefined && k !== "as") {
       return { ...acc, [k]: v };
     }
