@@ -170,7 +170,7 @@ export type LayoutProps = {
   userSelect?: CSS.UserSelect | CSS.UserSelect[];
   appearance?: CSS.Appearance | CSS.Appearance[];
   pointerEvents?: CSS.PointerEvents | CSS.PointerEvents[];
-  content?: CSS.Content | CSS.PointerEvents[];
+  content?: string;
 };
 
 export type PseudoSelectorProps = {
