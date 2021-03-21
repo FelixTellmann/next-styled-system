@@ -3,228 +3,228 @@ import React from "react";
 import hashString from "string-hash";
 
 export type LayoutProps = {
-  margin?: (CSS.Margin | number) | (CSS.Margin | number)[]
-  m?: (CSS.Margin | number) | (CSS.Margin | number)[]
-  marginTop?: (CSS.Margin | number) | (CSS.Margin | number)[]
-  mt?: (CSS.Margin | number) | (CSS.Margin | number)[]
-  marginRight?: (CSS.Margin | number) | (CSS.Margin | number)[]
-  mr?: (CSS.Margin | number) | (CSS.Margin | number)[]
-  marginBottom?: (CSS.Margin | number) | (CSS.Margin | number)[]
-  mb?: (CSS.Margin | number) | (CSS.Margin | number)[]
-  marginLeft?: (CSS.Margin | number) | (CSS.Margin | number)[]
-  ml?: (CSS.Margin | number) | (CSS.Margin | number)[]
-  marginX?: (CSS.Margin | number) | (CSS.Margin | number)[]
-  mx?: (CSS.Margin | number) | (CSS.Margin | number)[]
-  marginY?: (CSS.Margin | number) | (CSS.Margin | number)[]
-  my?: (CSS.Margin | number) | (CSS.Margin | number)[]
-  padding?: (CSS.Padding | number) | (CSS.Padding | number)[]
-  p?: (CSS.Padding | number) | (CSS.Padding | number)[]
-  paddingTop?: (CSS.Padding | number) | (CSS.Padding | number)[]
-  pt?: (CSS.Padding | number) | (CSS.Padding | number)[]
-  paddingRight?: (CSS.Padding | number) | (CSS.Padding | number)[]
-  pr?: (CSS.Padding | number) | (CSS.Padding | number)[]
-  paddingBottom?: (CSS.Padding | number) | (CSS.Padding | number)[]
-  pb?: (CSS.Padding | number) | (CSS.Padding | number)[]
-  paddingLeft?: (CSS.Padding | number) | (CSS.Padding | number)[]
-  pl?: (CSS.Padding | number) | (CSS.Padding | number)[]
-  paddingX?: (CSS.Padding | number) | (CSS.Padding | number)[]
-  px?: (CSS.Padding | number) | (CSS.Padding | number)[]
-  paddingY?: (CSS.Padding | number) | (CSS.Padding | number)[]
-  py?: (CSS.Padding | number) | (CSS.Padding | number)[]
-  border?: (CSS.Border | number) | (CSS.Border | number)[]
-  borderWidth?: (CSS.BorderWidth | number) | (CSS.BorderWidth | number)[]
-  borderColor?: CSS.BorderColor | CSS.BorderColor[]
-  borderStyle?: CSS.BorderStyle | CSS.BorderStyle[]
-  borderRadius?: (CSS.BorderRadius | number) | (CSS.BorderRadius | number)[]
-  borderTop?: (CSS.Border | number) | (CSS.Border | number)[]
-  borderTopWidth?: (CSS.BorderWidth | number) | (CSS.BorderWidth | number)[]
-  borderTopColor?: CSS.BorderColor | CSS.BorderColor[]
-  borderTopStyle?: CSS.BorderStyle | CSS.BorderStyle[]
-  borderTopLeftRadius?: (CSS.BorderRadius | number) | (CSS.BorderRadius | number)[]
-  borderTopRightRadius?: (CSS.BorderRadius | number) | (CSS.BorderRadius | number)[]
-  borderBottom?: (CSS.Border | number) | (CSS.Border | number)[]
-  borderBottomWidth?: (CSS.BorderWidth | number) | (CSS.BorderWidth | number)[]
-  borderBottomColor?: CSS.BorderColor | CSS.BorderColor[]
-  borderBottomStyle?: CSS.BorderStyle | CSS.BorderStyle[]
-  borderBottomLeftRadius?: (CSS.BorderRadius | number) | (CSS.BorderRadius | number)[]
-  borderBottomRightRadius?: (CSS.BorderRadius | number) | (CSS.BorderRadius | number)[]
-  borderLeft?: (CSS.Border | number) | (CSS.Border | number)[]
-  borderLeftWidth?: (CSS.BorderWidth | number) | (CSS.BorderWidth | number)[]
-  borderLeftColor?: CSS.BorderColor | CSS.BorderColor[]
-  borderLeftStyle?: CSS.BorderStyle | CSS.BorderStyle[]
-  borderRight?: (CSS.Border | number) | (CSS.Border | number)[]
-  borderRightWidth?: (CSS.BorderWidth | number) | (CSS.BorderWidth | number)[]
-  borderRightColor?: CSS.BorderColor | CSS.BorderColor[]
-  borderRightStyle?: CSS.BorderStyle | CSS.BorderStyle[]
-  borderX?: (CSS.Border | number) | (CSS.Border | number)[]
-  borderXWidth?: (CSS.BorderWidth | number) | (CSS.BorderWidth | number)[]
-  borderXColor?: CSS.BorderColor | CSS.BorderColor[]
-  borderXStyle?: CSS.BorderStyle | CSS.BorderStyle[]
-  borderY?: (CSS.Border | number) | (CSS.Border | number)[]
-  borderYWidth?: (CSS.BorderWidth | number) | (CSS.BorderWidth | number)[]
-  borderYColor?: CSS.BorderColor | CSS.BorderColor[]
-  borderYStyle?: CSS.BorderStyle | CSS.BorderStyle[]
-  width?: (CSS.Width | number) | (CSS.Width | number)[]
-  w?: (CSS.Width | number) | (CSS.Width | number)[]
-  height?: (CSS.Height | number) | (CSS.Height | number)[]
-  h?: (CSS.Height | number) | (CSS.Height | number)[]
-  size?: (CSS.Width | number) | (CSS.Width | number)[]
-  minWidth?: (CSS.MinWidth | number) | (CSS.MinWidth | number)[]
-  minW?: (CSS.MinWidth | number) | (CSS.MinWidth | number)[]
-  maxWidth?: (CSS.MaxWidth | number) | (CSS.MaxWidth | number)[]
-  maxW?: (CSS.MaxWidth | number) | (CSS.MaxWidth | number)[]
-  minHeight?: (CSS.MinHeight | number) | (CSS.MinHeight | number)[]
-  minH?: (CSS.MinHeight | number) | (CSS.MinHeight | number)[]
-  maxHeight?: (CSS.MaxHeight | number) | (CSS.MaxHeight | number)[]
-  maxH?: (CSS.MaxHeight | number) | (CSS.MaxHeight | number)[]
-  display?: CSS.Display | CSS.Display[]
-  d?: CSS.Display | CSS.Display[]
-  verticalAlign?: CSS.VerticalAlign | CSS.VerticalAlign[]
-  justifyContent?: CSS.JustifyContent | CSS.JustifyContent[]
-  justify?: CSS.JustifyContent | CSS.JustifyContent[]
-  alignItems?: CSS.AlignItems | CSS.AlignItems[]
-  align?: CSS.AlignItems | CSS.AlignItems[]
-  alignContent?: CSS.AlignContent | CSS.AlignContent[]
-  flexDirection?: CSS.FlexDirection | CSS.FlexDirection[]
-  direction?: CSS.FlexDirection | CSS.FlexDirection[]
-  flex?: (CSS.Flex | number) | (CSS.Flex | number)[]
-  flexWrap?: CSS.FlexWrap | CSS.FlexWrap[]
-  wrap?: CSS.FlexWrap | CSS.FlexWrap[]
-  flexBasis?: CSS.FlexBasis | CSS.FlexBasis[]
-  flexGrow?: CSS.FlexGrow | CSS.FlexGrow[]
-  flexShrink?: CSS.FlexShrink | CSS.FlexShrink[]
-  alignSelf?: CSS.AlignSelf | CSS.AlignSelf[]
-  justifySelf?: CSS.JustifySelf | CSS.JustifySelf[]
-  order?: (CSS.Order | number) | (CSS.Order | number)[]
-  gridGap?: (CSS.GridGap | number) | (CSS.GridGap | number)[]
-  gap?: (CSS.GridGap | number) | (CSS.GridGap | number)[]
-  gridRowGap?: CSS.GridRowGap | CSS.GridRowGap[]
-  gridColumnGap?: CSS.GridColumnGap | CSS.GridColumnGap[]
-  gridColumn?: CSS.GridColumn | CSS.GridColumn[]
-  gridRow?: CSS.GridRow | CSS.GridRow[]
-  gridArea?: CSS.GridArea | CSS.GridArea[]
-  gridAutoFlow?: CSS.GridAutoFlow | CSS.GridAutoFlow[]
-  gridAutoRows?: CSS.GridAutoRows | CSS.GridAutoRows[]
-  gridAutoColumns?: CSS.GridAutoColumns | CSS.GridAutoColumns[]
-  gridTemplateRows?: CSS.GridTemplateRows | CSS.GridTemplateRows[]
-  gridTemplateColumns?: CSS.GridTemplateColumns | CSS.GridTemplateColumns[]
-  gridTemplateAreas?: CSS.GridTemplateAreas | CSS.GridTemplateAreas[]
-  position?: CSS.Position | CSS.Position[]
-  top?: (CSS.Top | number) | (CSS.Top | number)[]
-  right?: (CSS.Right | number) | (CSS.Right | number)[]
-  bottom?: (CSS.Bottom | number) | (CSS.Bottom | number)[]
-  left?: (CSS.Left | number) | (CSS.Left | number)[]
-  zIndex?: (CSS.ZIndex | number) | (CSS.ZIndex | number)[]
-  overflow?: CSS.Overflow | CSS.Overflow[]
-  overflowX?: CSS.OverflowX | CSS.OverflowX[]
-  overflowY?: CSS.OverflowY | CSS.OverflowY[]
-  color?: CSS.Color | CSS.Color[]
-  background?: CSS.Background | CSS.Background[]
-  bg?: CSS.Background | CSS.Background[]
-  opacity?: (CSS.Opacity | number) | (CSS.Opacity | number)[]
-  backgroundAttachment?: CSS.BackgroundAttachment | CSS.BackgroundAttachment[]
-  backgroundClip?: CSS.BackgroundClip | CSS.BackgroundClip[]
-  backgroundColor?: CSS.BackgroundClip | CSS.BackgroundClip[]
-  bgc?: CSS.BackgroundClip | CSS.BackgroundClip[]
-  backgroundImage?: CSS.BackgroundImage | CSS.BackgroundImage[]
-  backgroundOrigin?: (CSS.BackgroundOrigin | number) | (CSS.BackgroundOrigin | number)[]
-  backgroundPositionX?: (CSS.BackgroundPositionX | number) | (CSS.BackgroundPositionX | number)[]
-  backgroundPositionY?: (CSS.BackgroundPositionY | number) | (CSS.BackgroundPositionY | number)[]
-  backgroundSize?: (CSS.BackgroundSize | number) | (CSS.BackgroundSize | number)[]
-  backdropFilter?: CSS.BackdropFilter | CSS.BackdropFilter[]
-  boxShadow?: CSS.BoxShadow | CSS.BoxShadow[]
-  outline?: CSS.Outline | CSS.Outline[]
-  outlineColor?: CSS.OutlineColor | CSS.OutlineColor[]
-  outlineOffset?: (CSS.OutlineOffset | number) | (CSS.OutlineOffset | number)[]
-  outlineStyle?: CSS.OutlineStyle | CSS.OutlineStyle[]
-  outlineWidth?: (CSS.OutlineWidth | number) | (CSS.OutlineWidth | number)[]
-  visibility?: CSS.Visibility | CSS.Visibility[]
-  fontFamily?: CSS.FontFamily | CSS.FontFamily[]
-  fontSize?: (CSS.FontSize | number) | (CSS.FontSize | number)[]
-  fz?: (CSS.FontSize | number) | (CSS.FontSize | number)[]
-  fontWeight?: (CSS.FontWeight | number) | (CSS.FontWeight | number)[]
-  fw?: (CSS.FontWeight | number) | (CSS.FontWeight | number)[]
-  weight?: (CSS.FontWeight | number) | (CSS.FontWeight | number)[]
-  lineHeight?: (CSS.LineHeight | number) | (CSS.LineHeight | number)[]
-  letterSpacing?: (CSS.LetterSpacing | number) | (CSS.LetterSpacing | number)[]
-  textAlign?: CSS.TextAlign | CSS.TextAlign[]
-  fontStyle?: CSS.FontStyle | CSS.FontStyle[]
-  textDecoration?: CSS.TextDecoration | CSS.TextDecoration[]
-  textTransform?: CSS.TextTransform | CSS.TextTransform[]
-  textShadow?: CSS.TextShadow | CSS.TextShadow[]
-  whiteSpace?: CSS.WhiteSpace | CSS.WhiteSpace[]
-  wordWrap?: CSS.WordWrap | CSS.WordWrap[]
-  wordBreak?: CSS.WordBreak | CSS.WordBreak[]
-  fill?: CSS.Fill | CSS.Fill[]
-  filter?: CSS.Filter | CSS.Filter[]
-  stroke?: CSS.Stroke | CSS.Stroke[]
-  transition?: CSS.Transition | CSS.Transition[]
-  transitionDelay?: CSS.TransitionDelay | CSS.TransitionDelay[]
-  transitionDuration?: CSS.TransitionDuration | CSS.TransitionDuration[]
-  TransitionProperty?: CSS.TransitionProperty | CSS.TransitionProperty[]
-  TransitionTimingFunction?: CSS.TransitionTimingFunction | CSS.TransitionTimingFunction[]
-  transform?: CSS.Transform | CSS.Transform[]
-  cursor?: CSS.Cursor | CSS.Cursor[]
-  resize?: CSS.Resize | CSS.Resize[]
-  objectFit?: CSS.ObjectFit | CSS.ObjectFit[]
-  userSelect?: CSS.UserSelect | CSS.UserSelect[]
-  appearance?: CSS.Appearance | CSS.Appearance[]
-  pointerEvents?: CSS.PointerEvents | CSS.PointerEvents[]
-  content?: CSS.Content | CSS.PointerEvents[]
-}
+  margin?: (CSS.Margin | number) | (CSS.Margin | number)[];
+  m?: (CSS.Margin | number) | (CSS.Margin | number)[];
+  marginTop?: (CSS.Margin | number) | (CSS.Margin | number)[];
+  mt?: (CSS.Margin | number) | (CSS.Margin | number)[];
+  marginRight?: (CSS.Margin | number) | (CSS.Margin | number)[];
+  mr?: (CSS.Margin | number) | (CSS.Margin | number)[];
+  marginBottom?: (CSS.Margin | number) | (CSS.Margin | number)[];
+  mb?: (CSS.Margin | number) | (CSS.Margin | number)[];
+  marginLeft?: (CSS.Margin | number) | (CSS.Margin | number)[];
+  ml?: (CSS.Margin | number) | (CSS.Margin | number)[];
+  marginX?: (CSS.Margin | number) | (CSS.Margin | number)[];
+  mx?: (CSS.Margin | number) | (CSS.Margin | number)[];
+  marginY?: (CSS.Margin | number) | (CSS.Margin | number)[];
+  my?: (CSS.Margin | number) | (CSS.Margin | number)[];
+  padding?: (CSS.Padding | number) | (CSS.Padding | number)[];
+  p?: (CSS.Padding | number) | (CSS.Padding | number)[];
+  paddingTop?: (CSS.Padding | number) | (CSS.Padding | number)[];
+  pt?: (CSS.Padding | number) | (CSS.Padding | number)[];
+  paddingRight?: (CSS.Padding | number) | (CSS.Padding | number)[];
+  pr?: (CSS.Padding | number) | (CSS.Padding | number)[];
+  paddingBottom?: (CSS.Padding | number) | (CSS.Padding | number)[];
+  pb?: (CSS.Padding | number) | (CSS.Padding | number)[];
+  paddingLeft?: (CSS.Padding | number) | (CSS.Padding | number)[];
+  pl?: (CSS.Padding | number) | (CSS.Padding | number)[];
+  paddingX?: (CSS.Padding | number) | (CSS.Padding | number)[];
+  px?: (CSS.Padding | number) | (CSS.Padding | number)[];
+  paddingY?: (CSS.Padding | number) | (CSS.Padding | number)[];
+  py?: (CSS.Padding | number) | (CSS.Padding | number)[];
+  border?: (CSS.Border | number) | (CSS.Border | number)[];
+  borderWidth?: (CSS.BorderWidth | number) | (CSS.BorderWidth | number)[];
+  borderColor?: CSS.BorderColor | CSS.BorderColor[];
+  borderStyle?: CSS.BorderStyle | CSS.BorderStyle[];
+  borderRadius?: (CSS.BorderRadius | number) | (CSS.BorderRadius | number)[];
+  borderTop?: (CSS.Border | number) | (CSS.Border | number)[];
+  borderTopWidth?: (CSS.BorderWidth | number) | (CSS.BorderWidth | number)[];
+  borderTopColor?: CSS.BorderColor | CSS.BorderColor[];
+  borderTopStyle?: CSS.BorderStyle | CSS.BorderStyle[];
+  borderTopLeftRadius?: (CSS.BorderRadius | number) | (CSS.BorderRadius | number)[];
+  borderTopRightRadius?: (CSS.BorderRadius | number) | (CSS.BorderRadius | number)[];
+  borderBottom?: (CSS.Border | number) | (CSS.Border | number)[];
+  borderBottomWidth?: (CSS.BorderWidth | number) | (CSS.BorderWidth | number)[];
+  borderBottomColor?: CSS.BorderColor | CSS.BorderColor[];
+  borderBottomStyle?: CSS.BorderStyle | CSS.BorderStyle[];
+  borderBottomLeftRadius?: (CSS.BorderRadius | number) | (CSS.BorderRadius | number)[];
+  borderBottomRightRadius?: (CSS.BorderRadius | number) | (CSS.BorderRadius | number)[];
+  borderLeft?: (CSS.Border | number) | (CSS.Border | number)[];
+  borderLeftWidth?: (CSS.BorderWidth | number) | (CSS.BorderWidth | number)[];
+  borderLeftColor?: CSS.BorderColor | CSS.BorderColor[];
+  borderLeftStyle?: CSS.BorderStyle | CSS.BorderStyle[];
+  borderRight?: (CSS.Border | number) | (CSS.Border | number)[];
+  borderRightWidth?: (CSS.BorderWidth | number) | (CSS.BorderWidth | number)[];
+  borderRightColor?: CSS.BorderColor | CSS.BorderColor[];
+  borderRightStyle?: CSS.BorderStyle | CSS.BorderStyle[];
+  borderX?: (CSS.Border | number) | (CSS.Border | number)[];
+  borderXWidth?: (CSS.BorderWidth | number) | (CSS.BorderWidth | number)[];
+  borderXColor?: CSS.BorderColor | CSS.BorderColor[];
+  borderXStyle?: CSS.BorderStyle | CSS.BorderStyle[];
+  borderY?: (CSS.Border | number) | (CSS.Border | number)[];
+  borderYWidth?: (CSS.BorderWidth | number) | (CSS.BorderWidth | number)[];
+  borderYColor?: CSS.BorderColor | CSS.BorderColor[];
+  borderYStyle?: CSS.BorderStyle | CSS.BorderStyle[];
+  width?: (CSS.Width | number) | (CSS.Width | number)[];
+  w?: (CSS.Width | number) | (CSS.Width | number)[];
+  height?: (CSS.Height | number) | (CSS.Height | number)[];
+  h?: (CSS.Height | number) | (CSS.Height | number)[];
+  size?: (CSS.Width | number) | (CSS.Width | number)[];
+  minWidth?: (CSS.MinWidth | number) | (CSS.MinWidth | number)[];
+  minW?: (CSS.MinWidth | number) | (CSS.MinWidth | number)[];
+  maxWidth?: (CSS.MaxWidth | number) | (CSS.MaxWidth | number)[];
+  maxW?: (CSS.MaxWidth | number) | (CSS.MaxWidth | number)[];
+  minHeight?: (CSS.MinHeight | number) | (CSS.MinHeight | number)[];
+  minH?: (CSS.MinHeight | number) | (CSS.MinHeight | number)[];
+  maxHeight?: (CSS.MaxHeight | number) | (CSS.MaxHeight | number)[];
+  maxH?: (CSS.MaxHeight | number) | (CSS.MaxHeight | number)[];
+  display?: CSS.Display | CSS.Display[];
+  d?: CSS.Display | CSS.Display[];
+  verticalAlign?: CSS.VerticalAlign | CSS.VerticalAlign[];
+  justifyContent?: CSS.JustifyContent | CSS.JustifyContent[];
+  justify?: CSS.JustifyContent | CSS.JustifyContent[];
+  alignItems?: CSS.AlignItems | CSS.AlignItems[];
+  align?: CSS.AlignItems | CSS.AlignItems[];
+  alignContent?: CSS.AlignContent | CSS.AlignContent[];
+  flexDirection?: CSS.FlexDirection | CSS.FlexDirection[];
+  direction?: CSS.FlexDirection | CSS.FlexDirection[];
+  flex?: (CSS.Flex | number) | (CSS.Flex | number)[];
+  flexWrap?: CSS.FlexWrap | CSS.FlexWrap[];
+  wrap?: CSS.FlexWrap | CSS.FlexWrap[];
+  flexBasis?: CSS.FlexBasis | CSS.FlexBasis[];
+  flexGrow?: CSS.FlexGrow | CSS.FlexGrow[];
+  flexShrink?: CSS.FlexShrink | CSS.FlexShrink[];
+  alignSelf?: CSS.AlignSelf | CSS.AlignSelf[];
+  justifySelf?: CSS.JustifySelf | CSS.JustifySelf[];
+  order?: (CSS.Order | number) | (CSS.Order | number)[];
+  gridGap?: (CSS.GridGap | number) | (CSS.GridGap | number)[];
+  gap?: (CSS.GridGap | number) | (CSS.GridGap | number)[];
+  gridRowGap?: CSS.GridRowGap | CSS.GridRowGap[];
+  gridColumnGap?: CSS.GridColumnGap | CSS.GridColumnGap[];
+  gridColumn?: CSS.GridColumn | CSS.GridColumn[];
+  gridRow?: CSS.GridRow | CSS.GridRow[];
+  gridArea?: CSS.GridArea | CSS.GridArea[];
+  gridAutoFlow?: CSS.GridAutoFlow | CSS.GridAutoFlow[];
+  gridAutoRows?: CSS.GridAutoRows | CSS.GridAutoRows[];
+  gridAutoColumns?: CSS.GridAutoColumns | CSS.GridAutoColumns[];
+  gridTemplateRows?: CSS.GridTemplateRows | CSS.GridTemplateRows[];
+  gridTemplateColumns?: CSS.GridTemplateColumns | CSS.GridTemplateColumns[];
+  gridTemplateAreas?: CSS.GridTemplateAreas | CSS.GridTemplateAreas[];
+  position?: CSS.Position | CSS.Position[];
+  top?: (CSS.Top | number) | (CSS.Top | number)[];
+  right?: (CSS.Right | number) | (CSS.Right | number)[];
+  bottom?: (CSS.Bottom | number) | (CSS.Bottom | number)[];
+  left?: (CSS.Left | number) | (CSS.Left | number)[];
+  zIndex?: (CSS.ZIndex | number) | (CSS.ZIndex | number)[];
+  overflow?: CSS.Overflow | CSS.Overflow[];
+  overflowX?: CSS.OverflowX | CSS.OverflowX[];
+  overflowY?: CSS.OverflowY | CSS.OverflowY[];
+  color?: CSS.Color | CSS.Color[];
+  background?: CSS.Background | CSS.Background[];
+  bg?: CSS.Background | CSS.Background[];
+  opacity?: (CSS.Opacity | number) | (CSS.Opacity | number)[];
+  backgroundAttachment?: CSS.BackgroundAttachment | CSS.BackgroundAttachment[];
+  backgroundClip?: CSS.BackgroundClip | CSS.BackgroundClip[];
+  backgroundColor?: CSS.BackgroundClip | CSS.BackgroundClip[];
+  bgc?: CSS.BackgroundClip | CSS.BackgroundClip[];
+  backgroundImage?: CSS.BackgroundImage | CSS.BackgroundImage[];
+  backgroundOrigin?: (CSS.BackgroundOrigin | number) | (CSS.BackgroundOrigin | number)[];
+  backgroundPositionX?: (CSS.BackgroundPositionX | number) | (CSS.BackgroundPositionX | number)[];
+  backgroundPositionY?: (CSS.BackgroundPositionY | number) | (CSS.BackgroundPositionY | number)[];
+  backgroundSize?: (CSS.BackgroundSize | number) | (CSS.BackgroundSize | number)[];
+  backdropFilter?: CSS.BackdropFilter | CSS.BackdropFilter[];
+  boxShadow?: CSS.BoxShadow | CSS.BoxShadow[];
+  outline?: CSS.Outline | CSS.Outline[];
+  outlineColor?: CSS.OutlineColor | CSS.OutlineColor[];
+  outlineOffset?: (CSS.OutlineOffset | number) | (CSS.OutlineOffset | number)[];
+  outlineStyle?: CSS.OutlineStyle | CSS.OutlineStyle[];
+  outlineWidth?: (CSS.OutlineWidth | number) | (CSS.OutlineWidth | number)[];
+  visibility?: CSS.Visibility | CSS.Visibility[];
+  fontFamily?: CSS.FontFamily | CSS.FontFamily[];
+  fontSize?: (CSS.FontSize | number) | (CSS.FontSize | number)[];
+  fz?: (CSS.FontSize | number) | (CSS.FontSize | number)[];
+  fontWeight?: (CSS.FontWeight | number) | (CSS.FontWeight | number)[];
+  fw?: (CSS.FontWeight | number) | (CSS.FontWeight | number)[];
+  weight?: (CSS.FontWeight | number) | (CSS.FontWeight | number)[];
+  lineHeight?: (CSS.LineHeight | number) | (CSS.LineHeight | number)[];
+  letterSpacing?: (CSS.LetterSpacing | number) | (CSS.LetterSpacing | number)[];
+  textAlign?: CSS.TextAlign | CSS.TextAlign[];
+  fontStyle?: CSS.FontStyle | CSS.FontStyle[];
+  textDecoration?: CSS.TextDecoration | CSS.TextDecoration[];
+  textTransform?: CSS.TextTransform | CSS.TextTransform[];
+  textShadow?: CSS.TextShadow | CSS.TextShadow[];
+  whiteSpace?: CSS.WhiteSpace | CSS.WhiteSpace[];
+  wordWrap?: CSS.WordWrap | CSS.WordWrap[];
+  wordBreak?: CSS.WordBreak | CSS.WordBreak[];
+  fill?: CSS.Fill | CSS.Fill[];
+  filter?: CSS.Filter | CSS.Filter[];
+  stroke?: CSS.Stroke | CSS.Stroke[];
+  transition?: CSS.Transition | CSS.Transition[];
+  transitionDelay?: CSS.TransitionDelay | CSS.TransitionDelay[];
+  transitionDuration?: CSS.TransitionDuration | CSS.TransitionDuration[];
+  TransitionProperty?: CSS.TransitionProperty | CSS.TransitionProperty[];
+  TransitionTimingFunction?: CSS.TransitionTimingFunction | CSS.TransitionTimingFunction[];
+  transform?: CSS.Transform | CSS.Transform[];
+  cursor?: CSS.Cursor | CSS.Cursor[];
+  resize?: CSS.Resize | CSS.Resize[];
+  objectFit?: CSS.ObjectFit | CSS.ObjectFit[];
+  userSelect?: CSS.UserSelect | CSS.UserSelect[];
+  appearance?: CSS.Appearance | CSS.Appearance[];
+  pointerEvents?: CSS.PointerEvents | CSS.PointerEvents[];
+  content?: CSS.Content | CSS.PointerEvents[];
+};
 
 export type PseudoSelectorProps = {
-  _hf?: LayoutProps,
-  _hfa?: LayoutProps,
-  _hfaa?: LayoutProps,
-  _fa?: LayoutProps,
-  _faa?: LayoutProps,
-  _hover?: LayoutProps
-  _focus?: LayoutProps
-  _active?: LayoutProps
-  _activeClass?: LayoutProps
-  _activeLink?: LayoutProps
-  _after?: LayoutProps
-  _autofill?: LayoutProps
-  _before?: LayoutProps
-  _checked?: LayoutProps
-  _empty?: LayoutProps
-  _even?: LayoutProps
-  _expanded?: LayoutProps
-  _first?: LayoutProps
-  _firstChild?: LayoutProps
-  _focusVisible?: LayoutProps
-  _focusWithin?: LayoutProps
-  _fullScreen?: LayoutProps
-  _grabbed?: LayoutProps
-  _hidden?: LayoutProps
-  _highlighted?: LayoutProps
-  _indeterminate?: LayoutProps
-  _invalid?: LayoutProps
-  _last?: LayoutProps
-  _lastChild?: LayoutProps
-  _loading?: LayoutProps
-  _notFirst?: LayoutProps
-  _notLast?: LayoutProps
-  _odd?: LayoutProps
-  _placeholder?: LayoutProps
-  _pressed?: LayoutProps
-  _readOnly?: LayoutProps
-  _selected?: LayoutProps
-  _selection?: LayoutProps
-  _valid?: LayoutProps
-  _visited?: LayoutProps
-}
+  _hf?: LayoutProps;
+  _hfa?: LayoutProps;
+  _hfaa?: LayoutProps;
+  _fa?: LayoutProps;
+  _faa?: LayoutProps;
+  _hover?: LayoutProps;
+  _focus?: LayoutProps;
+  _active?: LayoutProps;
+  _activeClass?: LayoutProps;
+  _activeLink?: LayoutProps;
+  _after?: LayoutProps;
+  _autofill?: LayoutProps;
+  _before?: LayoutProps;
+  _checked?: LayoutProps;
+  _empty?: LayoutProps;
+  _even?: LayoutProps;
+  _expanded?: LayoutProps;
+  _first?: LayoutProps;
+  _firstChild?: LayoutProps;
+  _focusVisible?: LayoutProps;
+  _focusWithin?: LayoutProps;
+  _fullScreen?: LayoutProps;
+  _grabbed?: LayoutProps;
+  _hidden?: LayoutProps;
+  _highlighted?: LayoutProps;
+  _indeterminate?: LayoutProps;
+  _invalid?: LayoutProps;
+  _last?: LayoutProps;
+  _lastChild?: LayoutProps;
+  _loading?: LayoutProps;
+  _notFirst?: LayoutProps;
+  _notLast?: LayoutProps;
+  _odd?: LayoutProps;
+  _placeholder?: LayoutProps;
+  _pressed?: LayoutProps;
+  _readOnly?: LayoutProps;
+  _selected?: LayoutProps;
+  _selection?: LayoutProps;
+  _valid?: LayoutProps;
+  _visited?: LayoutProps;
+};
 
-export type CssProps = LayoutProps & PseudoSelectorProps
+export type CssProps = LayoutProps & PseudoSelectorProps;
 
 export type ConfigProps = {
-  space?: number[]
-  fontSize?: number[]
-  breakpoints?: number[]
-  remBase?: number
-  color?: { [color: string]: { [intensity: number]: string } | string }
-}
+  space?: number[];
+  fontSize?: number[];
+  breakpoints?: number[];
+  remBase?: number;
+  color?: { [color: string]: { [intensity: number]: string } | string };
+};
 
 const defaultConfig: ConfigProps = {
   space: [0, 4, 8, 12, 16, 24, 32, 36, 64],
@@ -233,30 +233,30 @@ const defaultConfig: ConfigProps = {
   remBase: 10,
   color: {
     black: {
-      0:   "rgba(0,0,0,0)",
-      100:  "rgba(0,0,0,0.1)",
-      200:  "rgba(0,0,0,0.2)",
-      300:  "rgba(0,0,0,0.300)",
-      400:  "rgba(0,0,0,0.400)",
-      500:  "rgba(0,0,0,0.500)",
-      600:  "rgba(0,0,0,0.600)",
-      700:  "rgba(0,0,0,0.700)",
-      800:  "rgba(0,0,0,0.800)",      
-      900:  "rgba(0,0,0,0.900)",
-      1:  "rgba(0,0,0,1)"
+      0: "rgba(0,0,0,0)",
+      100: "rgba(0,0,0,0.1)",
+      200: "rgba(0,0,0,0.2)",
+      300: "rgba(0,0,0,0.300)",
+      400: "rgba(0,0,0,0.400)",
+      500: "rgba(0,0,0,0.500)",
+      600: "rgba(0,0,0,0.600)",
+      700: "rgba(0,0,0,0.700)",
+      800: "rgba(0,0,0,0.800)",
+      900: "rgba(0,0,0,0.900)",
+      1: "rgba(0,0,0,1)",
     },
     white: {
-      0:   "rgba(255,255,255,0)",
-      100:  "rgba(255,255,255,0.1)",
-      200:  "rgba(255,255,255,0.2)",
-      300:  "rgba(255,255,255,0.300)",
-      400:  "rgba(255,255,255,0.400)",
-      500:  "rgba(255,255,255,0.500)",
-      600:  "rgba(255,255,255,0.600)",
-      700:  "rgba(255,255,255,0.700)",
-      800:  "rgba(255,255,255,0.800)",      
-      900:  "rgba(255,255,255,0.900)",
-      1:  "rgba(255,255,255,1)"
+      0: "rgba(255,255,255,0)",
+      100: "rgba(255,255,255,0.1)",
+      200: "rgba(255,255,255,0.2)",
+      300: "rgba(255,255,255,0.300)",
+      400: "rgba(255,255,255,0.400)",
+      500: "rgba(255,255,255,0.500)",
+      600: "rgba(255,255,255,0.600)",
+      700: "rgba(255,255,255,0.700)",
+      800: "rgba(255,255,255,0.800)",
+      900: "rgba(255,255,255,0.900)",
+      1: "rgba(255,255,255,1)",
     },
     rose: {
       50: "#fff1f2",
@@ -268,7 +268,7 @@ const defaultConfig: ConfigProps = {
       600: "#e11d48",
       700: "#be123c",
       800: "#9f1239",
-      900: "#881337"
+      900: "#881337",
     },
     pink: {
       50: "#fdf2f8",
@@ -280,7 +280,7 @@ const defaultConfig: ConfigProps = {
       600: "#db2777",
       700: "#be185d",
       800: "#9d174d",
-      900: "#831843"
+      900: "#831843",
     },
     fuchsia: {
       50: "#fdf4ff",
@@ -292,7 +292,7 @@ const defaultConfig: ConfigProps = {
       600: "#c026d3",
       700: "#a21caf",
       800: "#86198f",
-      900: "#701a75"
+      900: "#701a75",
     },
     purple: {
       50: "#faf5ff",
@@ -304,7 +304,7 @@ const defaultConfig: ConfigProps = {
       600: "#9333ea",
       700: "#7e22ce",
       800: "#6b21a8",
-      900: "#581c87"
+      900: "#581c87",
     },
     violet: {
       50: "#f5f3ff",
@@ -316,7 +316,7 @@ const defaultConfig: ConfigProps = {
       600: "#7c3aed",
       700: "#6d28d9",
       800: "#5b21b6",
-      900: "#4c1d95"
+      900: "#4c1d95",
     },
     indigo: {
       50: "#eef2ff",
@@ -328,7 +328,7 @@ const defaultConfig: ConfigProps = {
       600: "#4f46e5",
       700: "#4338ca",
       800: "#3730a3",
-      900: "#312e81"
+      900: "#312e81",
     },
     blue: {
       50: "#eff6ff",
@@ -340,7 +340,7 @@ const defaultConfig: ConfigProps = {
       600: "#2563eb",
       700: "#1d4ed8",
       800: "#1e40af",
-      900: "#1e3a8a"
+      900: "#1e3a8a",
     },
     lightBlue: {
       50: "#f0f9ff",
@@ -352,7 +352,7 @@ const defaultConfig: ConfigProps = {
       600: "#0284c7",
       700: "#0369a1",
       800: "#075985",
-      900: "#0c4a6e"
+      900: "#0c4a6e",
     },
     cyan: {
       50: "#ecfeff",
@@ -364,7 +364,7 @@ const defaultConfig: ConfigProps = {
       600: "#0891b2",
       700: "#0e7490",
       800: "#155e75",
-      900: "#164e63"
+      900: "#164e63",
     },
     teal: {
       50: "#f0fdfa",
@@ -376,7 +376,7 @@ const defaultConfig: ConfigProps = {
       600: "#0d9488",
       700: "#0f766e",
       800: "#115e59",
-      900: "#134e4a"
+      900: "#134e4a",
     },
     emerald: {
       50: "#ecfdf5",
@@ -388,7 +388,7 @@ const defaultConfig: ConfigProps = {
       600: "#059669",
       700: "#047857",
       800: "#065f46",
-      900: "#064e3b"
+      900: "#064e3b",
     },
     green: {
       50: "#f0fdf4",
@@ -400,7 +400,7 @@ const defaultConfig: ConfigProps = {
       600: "#16a34a",
       700: "#15803d",
       800: "#166534",
-      900: "#14532d"
+      900: "#14532d",
     },
     lime: {
       50: "#f7fee7",
@@ -412,7 +412,7 @@ const defaultConfig: ConfigProps = {
       600: "#65a30d",
       700: "#4d7c0f",
       800: "#3f6212",
-      900: "#365314"
+      900: "#365314",
     },
     yellow: {
       50: "#fefce8",
@@ -424,7 +424,7 @@ const defaultConfig: ConfigProps = {
       600: "#ca8a04",
       700: "#a16207",
       800: "#854d0e",
-      900: "#713f12"
+      900: "#713f12",
     },
     amber: {
       50: "#fffbeb",
@@ -436,7 +436,7 @@ const defaultConfig: ConfigProps = {
       600: "#d97706",
       700: "#b45309",
       800: "#92400e",
-      900: "#78350f"
+      900: "#78350f",
     },
     orange: {
       50: "#fff7ed",
@@ -448,7 +448,7 @@ const defaultConfig: ConfigProps = {
       600: "#ea580c",
       700: "#c2410c",
       800: "#9a3412",
-      900: "#7c2d12"
+      900: "#7c2d12",
     },
     red: {
       50: "#fef2f2",
@@ -460,7 +460,7 @@ const defaultConfig: ConfigProps = {
       600: "#dc2626",
       700: "#b91c1c",
       800: "#991b1b",
-      900: "#7f1d1d"
+      900: "#7f1d1d",
     },
     warmGray: {
       50: "#fafaf9",
@@ -472,7 +472,7 @@ const defaultConfig: ConfigProps = {
       600: "#57534e",
       700: "#44403c",
       800: "#292524",
-      900: "#1c1917"
+      900: "#1c1917",
     },
     trueGray: {
       50: "#fafafa",
@@ -484,7 +484,7 @@ const defaultConfig: ConfigProps = {
       600: "#525252",
       700: "#404040",
       800: "#262626",
-      900: "#171717"
+      900: "#171717",
     },
     gray: {
       50: "#fafafa",
@@ -496,7 +496,7 @@ const defaultConfig: ConfigProps = {
       600: "#52525b",
       700: "#3f3f46",
       800: "#27272a",
-      900: "#18181b"
+      900: "#18181b",
     },
     coolGray: {
       50: "#f9fafb",
@@ -508,7 +508,7 @@ const defaultConfig: ConfigProps = {
       600: "#4b5563",
       700: "#374151",
       800: "#1f2937",
-      900: "#111827"
+      900: "#111827",
     },
     blueGray: {
       50: "#f8fafc",
@@ -520,180 +520,182 @@ const defaultConfig: ConfigProps = {
       600: "#475569",
       700: "#334155",
       800: "#1e293b",
-      900: "#0f172a"
-    }
-  }
+      900: "#0f172a",
+    },
+  },
 };
 
 const cssSelectors = {
-  "margin": ["space", [`m`]],
-  "m": [{ "margin": "space" }, [`m`]],
-  "marginTop": ["space", [`mt`]],
-  "mt": [{ "marginTop": "space" }, [`mt`]],
-  "marginRight": ["space", [`mr`]],
-  "mr": [{ "marginRight": "space" }, [`mr`]],
-  "marginBottom": ["space", [`mb`]],
-  "mb": [{ "marginBottom": "space" }, [`mb`]],
-  "marginLeft": ["space", [`ml`]],
-  "ml": [{ "marginLeft": "space" }, [`ml`]],
-  "marginX": [{ "marginLeft": "space", "marginRight": "space" }, [`mx`]],
-  "mx": [{ "marginLeft": "space", "marginRight": "space" }, [`mx`]],
-  "marginY": [{ "marginTop": "space", "marginBottom": "space" }, [`my`]],
-  "my": [{ "marginTop": "space", "marginBottom": "space" }, [`my`]],
-  "padding": ["space", [`p`]],
-  "p": [{ "padding": "space" }, [`p`]],
-  "paddingTop": ["space", [`pt`]],
-  "pt": [{ "paddingTop": "space" }, [`pt`]],
-  "paddingRight": ["space", [`pr`]],
-  "pr": [{ "paddingRight": "space" }, [`pr`]],
-  "paddingBottom": ["space", [`pb`]],
-  "pb": [{ "paddingBottom": "space" }, [`pb`]],
-  "paddingLeft": ["space", [`pl`]],
-  "pl": [{ "paddingLeft": "space" }, [`pl`]],
-  "paddingX": [{ "paddingLeft": "space", "paddingRight": "space" }, [`px`]],
-  "px": [{ "paddingLeft": "space", "paddingRight": "space" }, [`px`]],
-  "paddingY": [{ "paddingTop": "space", "paddingBottom": "space" }, [`py`]],
-  "py": [{ "paddingTop": "space", "paddingBottom": "space" }, [`py`]],
-  "border": ["space", [`b`]],
-  "borderWidth": ["space", [`bw`]],
-  "borderColor": ["color", [`bc`]],
-  "borderStyle": ["", [`bs`]],
-  "borderRadius": ["space", [`br`]],
-  "borderTop": ["space", [`bt`]],
-  "borderTopWidth": ["space", [`btw`]],
-  "borderTopColor": ["color", [`btc`]],
-  "borderTopStyle": ["", [`bts`]],
-  "borderTopLeftRadius": ["space", [`btlr`]],
-  "borderTopRightRadius": ["space", [`btrr`]],
-  "borderBottom": ["space", [`bb`]],
-  "borderBottomWidth": ["space", [`bbw`]],
-  "borderBottomColor": ["color", [`bbc`]],
-  "borderBottomStyle": ["", [`bbs`]],
-  "borderBottomLeftRadius": ["space", [`bblr`]],
-  "borderBottomRightRadius": ["space", [`bbrr`]],
-  "borderLeft": ["space", [`bl`]],
-  "borderLeftWidth": ["space", [`blw`]],
-  "borderLeftColor": ["color", [`blc`]],
-  "borderLeftStyle": ["", [`bls`]],
-  "borderRight": ["space", [`br`]],
-  "borderRightWidth": ["space", [`brw`]],
-  "borderRightColor": ["", [`brc`]],
-  "borderRightStyle": ["", [`brs`]],
-  "borderX": [{ "borderLeft": "space", "borderRight": "space" }, [`bx`]],
-  "borderXWidth": [{ "borderLeftWidth": "space", "borderRightWidth": "space" }, [`bxw`]],
-  "borderXColor": [{ "borderLeftColor": "color", "borderRightColor": "" }, [`bxc`]],
-  "borderXStyle": [{ "borderLeftStyle": "", "borderRightStyle": "" }, [`bxs`]],
-  "borderY": [{ "borderTop": "space", "borderBottom": "space" }, [`by`]],
-  "borderYWidth": [{ "borderTopWidth": "space", "borderBottomWidth": "space" }, [`byw`]],
-  "borderYColor": [{ "borderTopColor": "color", "borderBottomColor": "color" }, [`byc`]],
-  "borderYStyle": [{ "borderTopStyle": "", "borderBottomStyle": "" }, [`bys`]],
-  "width": ["space", [`w`]],
-  "w": [{ "width": "space" }, [`w`]],
-  "height": ["space", [`h`]],
-  "h": [{ "height": "space" }, [`h`]],
-  "size": [{ "width": "space", "height": "space" }, [`s`]],
-  "minWidth": ["space", [`minw`]],
-  "minW": [{ "minWidth": "space" }, [`minw`]],
-  "maxWidth": ["space", [`maxw`]],
-  "maxW": [{ "maxWidth": "space" }, [`maxw`]],
-  "minHeight": ["space", [`minh`]],
-  "minH": [{ "minHeight": "space" }, [`minh`]],
-  "maxHeight": ["space", [`maxh`]],
-  "maxH": [{ "maxHeight": "space" }, [`maxh`]],
-  "display": ["", [`d`]],
-  "d": [{ "display": "" }, [`d`]],
-  "verticalAlign": ["", [`va`]],
-  "justifyContent": [{ "-ms-flex-pack": "", "-webkit-box-pack": "", "justifyContent": "" }],
-  "justify": [{ "-webkit-box-pack": "", "-ms-flex-pack": "", "justifyContent": "" }],
-  "alignItems": [{ "-ms-flex-align": "", "-webkit-box-align": "", "alignItems": "" }],
-  "align": [{ "-ms-flex-align": "", "-webkit-box-align": "", "alignItems": "" }],
-  "alignContent": [{ "-ms-flex-line-pack": "", "alignContent": "" }],
-  "flexDirection": [{ "-ms-flex-direction": "", "-webkit-box-orient": "", "-webkit-box-direction": "", "flexDirection": "" }],
-  "direction": [{ "-ms-flex-direction": "", "-webkit-box-orient": "", "-webkit-box-direction": "", "flexDirection": "" }],
-  "flex": [{ "-mx-flex": "", "webkit-box-flex": "", "webkit-flex": "", "flex": "" }],
-  "flexWrap": [{ "-ms-flex-wrap": "", "flexWrap": "" }],
-  "wrap": [{ "-ms-flex-wrap": "", "flexWrap": "" }],
-  "flexBasis": [{ "-ms-flex-preferred-size": "", "-mx-flex": "", "flexBasis": "" }],
-  "flexGrow": [{ "-ms-flex-positive": "", "-webkit-box-flex": "", "flexGrow": "" }],
-  "flexShrink": [{ "-ms-flex-negative": "", "flexShrink": "" }],
-  "alignSelf": [{ "-ms-grid-row-align": "", "alignSelf": "" }],
-  "justifySelf": [{ "-ms-grid-column-align": "", "justifySelf": "" }],
-  "order": [{ "-ms-flex-order": "", "-webkit-box-ordinal-group": "", "order": "" }],
-  "gridGap": ["space"],
-  "gap": [{ "gridGap": "gridGap" }],
-  "gridRowGap": ["space"],
-  "gridColumnGap": ["space"],
-  "gridColumn": [""],
-  "gridRow": [""],
-  "gridArea": [""],
-  "gridAutoFlow": [""],
-  "gridAutoRows": [""],
-  "gridAutoColumns": [""],
-  "gridTemplateRows": [{ "-ms-grid-rows": "", "gridTemplateRows": "" }],
-  "gridTemplateColumns": [{ "-ms-grid-columns": "", "gridTemplateColumns": "" }],
-  "gridTemplateAreas": [""],
-  "position": ["", [`pos`]],
-  "top": ["space"],
-  "right": ["space"],
-  "bottom": ["space"],
-  "left": ["space"],
-  "zIndex": ["zIndices"],
-  "overflow": [""],
-  "overflowX": [""],
-  "overflowY": [""],
-  "color": ["color", [`c`]],
-  "background": ["color", [`bg`]],
-  "bg": [{ "background": "color" }, [`bg`]],
-  "opacity": [""],
-  "backgroundAttachment": ["", [`bga`]],
-  "backgroundClip": [{ "-webkit-background-clip": "", "backgroundClip": "" }, [`bgclip`]],
-  "backgroundColor": ["color", [`bgc`]],
-  "bgc": [{ "backgroundColor": "color" }, [`bgc`]],
-  "backgroundImage": ["", [`bgi`]],
-  "backgroundOrigin": ["", [`bgo`]],
-  "backgroundPositionX": ["space", [`bgpx`]],
-  "backgroundPositionY": ["space", [`bgpy`]],
-  "backgroundSize": ["space", [`bgs`]],
-  "backdropFilter": [{ "-webkit-backdropFilter": "", "backdropFilter": "" }],
-  "boxShadow": [{ "-webkit-box-shadow": "", "boxShadow": "" }],
-  "outline": [""],
-  "outlineColor": ["color"],
-  "outlineOffset": ["space"],
-  "outlineStyle": [""],
-  "outlineWidth": ["space"],
-  "visibility": [""],
-  "fontFamily": [""],
-  "fontSize": ["fontSize", [`fz`]],
-  "fz": [{ "fontSize": "fontSize" }, [`fz`]],
-  "fontWeight": ["", [`fw`]],
-  "fw": [{ "fontWeight": "fontWeight" }, [`fw`]],
-  "weight": [{ "fontWeight": "fontWeight" }, [`fw`]],
-  "lineHeight": ["", [`lh`]],
-  "letterSpacing": ["", [`ls`]],
-  "textAlign": ["", [`talign`]],
-  "fontStyle": [""],
-  "textDecoration": [""],
-  "textTransform": [""],
-  "textShadow": [""],
-  "whiteSpace": [""],
-  "wordWrap": [""],
-  "wordBreak": [""],
-  "fill": [""],
-  "filter": [{ "-webkit-filter": "", "filter": "" }],
-  "stroke": [""],
-  "transition": [{ "-o-transition": "", "-webkit-transition": "", "transition": "" }],
-  "transitionDelay": [{ "-webkit-transition-delay": "", "transitionDelay": "" }],
-  "transitionDuration": [{ "-webkit-transition-duration": "", "transitionDuration": "" }],
-  "TransitionProperty": [{ "-webkit-transition-property": "", "TransitionProperty": "" }],
-  "TransitionTimingFunction": [{ "-webkit-transition-timing-function": "", "TransitionTimingFunction": "" }],
-  "transform": [{ "-ms-transform": "", "-webkit-transform": "", "transform": "" }],
-  "cursor": [""],
-  "resize": [""],
-  "objectFit": [{ "-o-object-fit": "", "objectFit": "" }],
-  "userSelect": [{ "-webkit-user-select": "", "-moz-user-select": "", "-ms-user-select": "", "userSelect": "" }],
-  "appearance": [{ "-webkit-appearance": "", "appearance": "" }],
-  "pointerEvents": [""],
-  "content": ["content"]
+  margin: ["space", [`m`]],
+  m: [{ margin: "space" }, [`m`]],
+  marginTop: ["space", [`mt`]],
+  mt: [{ marginTop: "space" }, [`mt`]],
+  marginRight: ["space", [`mr`]],
+  mr: [{ marginRight: "space" }, [`mr`]],
+  marginBottom: ["space", [`mb`]],
+  mb: [{ marginBottom: "space" }, [`mb`]],
+  marginLeft: ["space", [`ml`]],
+  ml: [{ marginLeft: "space" }, [`ml`]],
+  marginX: [{ marginLeft: "space", marginRight: "space" }, [`mx`]],
+  mx: [{ marginLeft: "space", marginRight: "space" }, [`mx`]],
+  marginY: [{ marginTop: "space", marginBottom: "space" }, [`my`]],
+  my: [{ marginTop: "space", marginBottom: "space" }, [`my`]],
+  padding: ["space", [`p`]],
+  p: [{ padding: "space" }, [`p`]],
+  paddingTop: ["space", [`pt`]],
+  pt: [{ paddingTop: "space" }, [`pt`]],
+  paddingRight: ["space", [`pr`]],
+  pr: [{ paddingRight: "space" }, [`pr`]],
+  paddingBottom: ["space", [`pb`]],
+  pb: [{ paddingBottom: "space" }, [`pb`]],
+  paddingLeft: ["space", [`pl`]],
+  pl: [{ paddingLeft: "space" }, [`pl`]],
+  paddingX: [{ paddingLeft: "space", paddingRight: "space" }, [`px`]],
+  px: [{ paddingLeft: "space", paddingRight: "space" }, [`px`]],
+  paddingY: [{ paddingTop: "space", paddingBottom: "space" }, [`py`]],
+  py: [{ paddingTop: "space", paddingBottom: "space" }, [`py`]],
+  border: ["space", [`b`]],
+  borderWidth: ["space", [`bw`]],
+  borderColor: ["color", [`bc`]],
+  borderStyle: ["", [`bs`]],
+  borderRadius: ["space", [`br`]],
+  borderTop: ["space", [`bt`]],
+  borderTopWidth: ["space", [`btw`]],
+  borderTopColor: ["color", [`btc`]],
+  borderTopStyle: ["", [`bts`]],
+  borderTopLeftRadius: ["space", [`btlr`]],
+  borderTopRightRadius: ["space", [`btrr`]],
+  borderBottom: ["space", [`bb`]],
+  borderBottomWidth: ["space", [`bbw`]],
+  borderBottomColor: ["color", [`bbc`]],
+  borderBottomStyle: ["", [`bbs`]],
+  borderBottomLeftRadius: ["space", [`bblr`]],
+  borderBottomRightRadius: ["space", [`bbrr`]],
+  borderLeft: ["space", [`bl`]],
+  borderLeftWidth: ["space", [`blw`]],
+  borderLeftColor: ["color", [`blc`]],
+  borderLeftStyle: ["", [`bls`]],
+  borderRight: ["space", [`br`]],
+  borderRightWidth: ["space", [`brw`]],
+  borderRightColor: ["", [`brc`]],
+  borderRightStyle: ["", [`brs`]],
+  borderX: [{ borderLeft: "space", borderRight: "space" }, [`bx`]],
+  borderXWidth: [{ borderLeftWidth: "space", borderRightWidth: "space" }, [`bxw`]],
+  borderXColor: [{ borderLeftColor: "color", borderRightColor: "" }, [`bxc`]],
+  borderXStyle: [{ borderLeftStyle: "", borderRightStyle: "" }, [`bxs`]],
+  borderY: [{ borderTop: "space", borderBottom: "space" }, [`by`]],
+  borderYWidth: [{ borderTopWidth: "space", borderBottomWidth: "space" }, [`byw`]],
+  borderYColor: [{ borderTopColor: "color", borderBottomColor: "color" }, [`byc`]],
+  borderYStyle: [{ borderTopStyle: "", borderBottomStyle: "" }, [`bys`]],
+  width: ["space", [`w`]],
+  w: [{ width: "space" }, [`w`]],
+  height: ["space", [`h`]],
+  h: [{ height: "space" }, [`h`]],
+  size: [{ width: "space", height: "space" }, [`s`]],
+  minWidth: ["space", [`minw`]],
+  minW: [{ minWidth: "space" }, [`minw`]],
+  maxWidth: ["space", [`maxw`]],
+  maxW: [{ maxWidth: "space" }, [`maxw`]],
+  minHeight: ["space", [`minh`]],
+  minH: [{ minHeight: "space" }, [`minh`]],
+  maxHeight: ["space", [`maxh`]],
+  maxH: [{ maxHeight: "space" }, [`maxh`]],
+  display: ["", [`d`]],
+  d: [{ display: "" }, [`d`]],
+  verticalAlign: ["", [`va`]],
+  justifyContent: [{ "-ms-flex-pack": "", "-webkit-box-pack": "", justifyContent: "" }],
+  justify: [{ "-webkit-box-pack": "", "-ms-flex-pack": "", justifyContent: "" }],
+  alignItems: [{ "-ms-flex-align": "", "-webkit-box-align": "", alignItems: "" }],
+  align: [{ "-ms-flex-align": "", "-webkit-box-align": "", alignItems: "" }],
+  alignContent: [{ "-ms-flex-line-pack": "", alignContent: "" }],
+  flexDirection: [
+    { "-ms-flex-direction": "", "-webkit-box-orient": "", "-webkit-box-direction": "", flexDirection: "" },
+  ],
+  direction: [{ "-ms-flex-direction": "", "-webkit-box-orient": "", "-webkit-box-direction": "", flexDirection: "" }],
+  flex: [{ "-mx-flex": "", "webkit-box-flex": "", "webkit-flex": "", flex: "" }],
+  flexWrap: [{ "-ms-flex-wrap": "", flexWrap: "" }],
+  wrap: [{ "-ms-flex-wrap": "", flexWrap: "" }],
+  flexBasis: [{ "-ms-flex-preferred-size": "", "-mx-flex": "", flexBasis: "" }],
+  flexGrow: [{ "-ms-flex-positive": "", "-webkit-box-flex": "", flexGrow: "" }],
+  flexShrink: [{ "-ms-flex-negative": "", flexShrink: "" }],
+  alignSelf: [{ "-ms-grid-row-align": "", alignSelf: "" }],
+  justifySelf: [{ "-ms-grid-column-align": "", justifySelf: "" }],
+  order: [{ "-ms-flex-order": "", "-webkit-box-ordinal-group": "", order: "" }],
+  gridGap: ["space"],
+  gap: [{ gridGap: "gridGap" }],
+  gridRowGap: ["space"],
+  gridColumnGap: ["space"],
+  gridColumn: [""],
+  gridRow: [""],
+  gridArea: [""],
+  gridAutoFlow: [""],
+  gridAutoRows: [""],
+  gridAutoColumns: [""],
+  gridTemplateRows: [{ "-ms-grid-rows": "", gridTemplateRows: "" }],
+  gridTemplateColumns: [{ "-ms-grid-columns": "", gridTemplateColumns: "" }],
+  gridTemplateAreas: [""],
+  position: ["", [`pos`]],
+  top: ["space"],
+  right: ["space"],
+  bottom: ["space"],
+  left: ["space"],
+  zIndex: ["zIndices"],
+  overflow: [""],
+  overflowX: [""],
+  overflowY: [""],
+  color: ["color", [`c`]],
+  background: ["color", [`bg`]],
+  bg: [{ background: "color" }, [`bg`]],
+  opacity: [""],
+  backgroundAttachment: ["", [`bga`]],
+  backgroundClip: [{ "-webkit-background-clip": "", backgroundClip: "" }, [`bgclip`]],
+  backgroundColor: ["color", [`bgc`]],
+  bgc: [{ backgroundColor: "color" }, [`bgc`]],
+  backgroundImage: ["", [`bgi`]],
+  backgroundOrigin: ["", [`bgo`]],
+  backgroundPositionX: ["space", [`bgpx`]],
+  backgroundPositionY: ["space", [`bgpy`]],
+  backgroundSize: ["space", [`bgs`]],
+  backdropFilter: [{ "-webkit-backdropFilter": "", backdropFilter: "" }],
+  boxShadow: [{ "-webkit-box-shadow": "", boxShadow: "" }],
+  outline: [""],
+  outlineColor: ["color"],
+  outlineOffset: ["space"],
+  outlineStyle: [""],
+  outlineWidth: ["space"],
+  visibility: [""],
+  fontFamily: [""],
+  fontSize: ["fontSize", [`fz`]],
+  fz: [{ fontSize: "fontSize" }, [`fz`]],
+  fontWeight: ["", [`fw`]],
+  fw: [{ fontWeight: "fontWeight" }, [`fw`]],
+  weight: [{ fontWeight: "fontWeight" }, [`fw`]],
+  lineHeight: ["", [`lh`]],
+  letterSpacing: ["", [`ls`]],
+  textAlign: ["", [`talign`]],
+  fontStyle: [""],
+  textDecoration: [""],
+  textTransform: [""],
+  textShadow: [""],
+  whiteSpace: [""],
+  wordWrap: [""],
+  wordBreak: [""],
+  fill: [""],
+  filter: [{ "-webkit-filter": "", filter: "" }],
+  stroke: [""],
+  transition: [{ "-o-transition": "", "-webkit-transition": "", transition: "" }],
+  transitionDelay: [{ "-webkit-transition-delay": "", transitionDelay: "" }],
+  transitionDuration: [{ "-webkit-transition-duration": "", transitionDuration: "" }],
+  TransitionProperty: [{ "-webkit-transition-property": "", TransitionProperty: "" }],
+  TransitionTimingFunction: [{ "-webkit-transition-timing-function": "", TransitionTimingFunction: "" }],
+  transform: [{ "-ms-transform": "", "-webkit-transform": "", transform: "" }],
+  cursor: [""],
+  resize: [""],
+  objectFit: [{ "-o-object-fit": "", objectFit: "" }],
+  userSelect: [{ "-webkit-user-select": "", "-moz-user-select": "", "-ms-user-select": "", userSelect: "" }],
+  appearance: [{ "-webkit-appearance": "", appearance: "" }],
+  pointerEvents: [""],
+  content: ["content"],
 };
 
 const pseudoSelectors = {
@@ -736,7 +738,7 @@ const pseudoSelectors = {
   _selected: "&[aria-selected=true], &[data-selected]",
   _selection: "&::selection",
   _valid: "&[data-valid], &[data-state=valid]",
-  _visited: "&:visited"
+  _visited: "&:visited",
 };
 
 function toCssProperty(JsSyntax: string): string {
@@ -744,18 +746,21 @@ function toCssProperty(JsSyntax: string): string {
 }
 
 function parseCssVariables(val: string | number) {
-  return val.toString().replace(/^--.+/, (match) => `var(${match})`).replace(/^$/, "''");
+  return val
+    .toString()
+    .replace(/^--.+/, match => `var(${match})`)
+    .replace(/^$/, "''");
 }
 
 function parseCssSizes(val: number | string, type: "" | "fontSize" | "space" | "color", { remBase, ...cfg }): string {
-  if (typeof val === "string" && type === 'color') {
-    val = val.toLowerCase()
-      if (cfg[type][val.split('.')[0]] && cfg[type][val.split('.')[0]][val.split('.')[1]]) {
-        return cfg[type][val.split('.')[0].toLowerCase()][val.split('.')[1]];
-      }
+  if (typeof val === "string" && type === "color") {
+    val = val.toLowerCase();
+    if (cfg[type][val.split(".")[0]] && cfg[type][val.split(".")[0]][val.split(".")[1]]) {
+      return cfg[type][val.split(".")[0].toLowerCase()][val.split(".")[1]];
+    }
   }
   if (typeof val === "string") {
-    return val.replace(/([\d.]+)px/gi, (match) => `${parseFloat(match) / remBase}rem`);
+    return val.replace(/([\d.]+)px/gi, match => `${parseFloat(match) / remBase}rem`);
   }
   if (typeof val === "number" && val >= 0 && val < cfg[type].length && val % 1 === 0) {
     return `${cfg[type][val] / remBase}rem`;
@@ -778,12 +783,11 @@ function toCssValue(key: "" | "fontSize" | "space" | "color" | "content", val: s
   if (cfg[key]) {
     return parseCssVariables(parseCssSizes(val, key, cfg));
   }
-  
+
   return parseCssVariables(val);
 }
 
 function createStyleString(parsedCssProps: LayoutProps, breakpoint = 0, cfg: ConfigProps): string {
-  
   return Object.entries(parsedCssProps).reduce((acc, [key, val]) => {
     if (key === "selector") return acc;
     if (breakpoint === 0) {
@@ -817,7 +821,7 @@ function createStyleString(parsedCssProps: LayoutProps, breakpoint = 0, cfg: Con
   }, "");
 }
 
-function createSingleStyle([key, val]: any, breakpoint = 0, cfg: ConfigProps): string {
+function createSingleStyle([key, val], breakpoint = 0, cfg: ConfigProps): string {
   let acc = "";
   if (key === "selector") return acc;
   if (breakpoint === 0) {
@@ -847,78 +851,103 @@ function createSingleStyle([key, val]: any, breakpoint = 0, cfg: ConfigProps): s
       });
     }
   }
-  
+
   return acc;
 }
 
 function getClassName(key, val, bp, pseudo, config) {
-  if (key === 'selector') return '';
-  
-  const cssValue = toCssValue(typeof cssSelectors[key][0] === "string"
-                              ? cssSelectors[key][0]
-                              : cssSelectors[key][0][Object.keys(cssSelectors[key][0])[0]], getResponsiveValue(val, bp), config).split(" ");
-  let cleanCssValue = cssValue.map(val => val.match(/rem$/)
-                                            ? String(+val.replace(/rem$/, "") * 10)
-                                            : val).join("-").replace(/\s/g, "-").replace(/[!&\/\\#,+()$~%.'":*?<>{}]/g, "");
-  
-  
-  let className = cssSelectors[key][1] ? cssSelectors[key][1][0] : key
-  let responsive = bp > 0 ? `bp${bp}-` : ""
-  let pseudoSelector = pseudo ? `${pseudo}-` : ""
-  if (cssSelectors[key][0] === "color"
-    && typeof val === "string"
-    && config[cssSelectors[key][0]][val.split('.')[0].toLowerCase()]
-    && config[cssSelectors[key][0]][val.split('.')[0].toLowerCase()][val.split('.')[1]]) {
-    cleanCssValue = val.replace('.','').toLowerCase()
+  if (key === "selector") return "";
+
+  const cssValue = toCssValue(
+    typeof cssSelectors[key][0] === "string"
+      ? cssSelectors[key][0]
+      : cssSelectors[key][0][Object.keys(cssSelectors[key][0])[0]],
+    getResponsiveValue(val, bp),
+    config
+  ).split(" ");
+  let cleanCssValue = cssValue
+    .map(val => (val.match(/rem$/) ? String(+val.replace(/rem$/, "") * 10) : val))
+    .join("-")
+    .replace(/\s/g, "-")
+    .replace(/[!&\/\\#,+()$~%.'":*?<>{}]/g, "");
+
+  const className = cssSelectors[key][1] ? cssSelectors[key][1][0] : key;
+  const responsive = bp > 0 ? `bp${bp}-` : "";
+  const pseudoSelector = pseudo ? `${pseudo}-` : "";
+  if (
+    cssSelectors[key][0] === "color" &&
+    typeof val === "string" &&
+    config[cssSelectors[key][0]][val.split(".")[0].toLowerCase()] &&
+    config[cssSelectors[key][0]][val.split(".")[0].toLowerCase()][val.split(".")[1]]
+  ) {
+    cleanCssValue = val.replace(".", "").toLowerCase();
   }
-  
+
   return `${pseudoSelector}${responsive}${className}-${cleanCssValue}`;
 }
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export function nextStyledSystem(props: any, config: ConfigProps = {}): { id?: string; styles?: string; styleArray: [string, string][]; filteredProps? } {
-  
+export function nextStyledSystem(
+  props: any,
+  config: ConfigProps = {}
+): { id?: string; styles?: string; styleArray: [string, string][]; filteredProps? } {
   if (!("breakpoints" in config)) config.breakpoints = defaultConfig.breakpoints;
   if (!("remBase" in config)) config.remBase = defaultConfig.remBase;
   if (!("space" in config)) config.space = defaultConfig.space;
   if (!("fontSize" in config)) config.fontSize = defaultConfig.fontSize;
   if (!("color" in config)) config.color = defaultConfig.color;
-  
+
   const { breakpoints } = config;
-  
-  const filteredProps = /*useMemo(() => */Object.entries(props).reduce((a, [k, v]) => {
-    if (cssSelectors[k] === undefined && pseudoSelectors[k] === undefined) {
-      return { ...a, [k]: v };
+
+  const filteredProps = /*useMemo(() => */ Object.entries(props).reduce((acc, [k, v]) => {
+    if (cssSelectors[k] === undefined && pseudoSelectors[k] === undefined && k !== "as") {
+      return { ...acc, [k]: v };
     }
-    return a;
-  }, {});/*, [props]);*/
-  const cssProps = /*useMemo(() => */Object.entries(props).reduce((a, [k, v]) => {
+    return acc;
+  }, {}); /*, [props]);*/
+  const cssProps = /*useMemo(() => */ Object.entries(props).reduce((a, [k, v]) => {
     if (cssSelectors[k] !== undefined && pseudoSelectors[k] === undefined) {
       return { ...a, [k]: v };
     }
     return a;
-  }, {});/*, [props]);*/
-  const pseudoProps = /*useMemo(() => */Object.entries(props).reduce((a, [k, v]) => {
+  }, {}); /*, [props]);*/
+  const pseudoProps = /*useMemo(() => */ Object.entries(props).reduce((a, [k, v]) => {
     if (cssSelectors[k] === undefined && pseudoSelectors[k] !== undefined) {
       return { ...a, [k]: v };
     }
     return a;
-  }, {});/*, [props]);*/
-  
-  const base = breakpoints.map((bp, i) => createStyleString(cssProps, i, config)
-    && `${i !== 0
-          ? `@media screen and (min-width: ${bp}px){`
-          : ""}&{${createStyleString(cssProps, i, config)}}${i !== 0 ? `}` : ""}`).join("");
-  
-  const pseudo = Object.entries(pseudoProps).map(([k, v]) => breakpoints.map((bp, i) => createStyleString(v, i, config)
-    && `${i !== 0
-          ? `@media screen and (min-width: ${bp}px){`
-          : ""}${pseudoSelectors[k]}{${createStyleString(v, i, config)}}${i !== 0 ? `}` : ""}`).join("")).join("");
-  
+  }, {}); /*, [props]);*/
+
+  const base = breakpoints
+    .map(
+      (bp, i) =>
+        createStyleString(cssProps, i, config) &&
+        `${i !== 0 ? `@media screen and (min-width: ${bp}px){` : ""}&{${createStyleString(cssProps, i, config)}}${
+          i !== 0 ? `}` : ""
+        }`
+    )
+    .join("");
+
+  const pseudo = Object.entries(pseudoProps)
+    .map(([k, v]) =>
+      breakpoints
+        .map(
+          (bp, i) =>
+            createStyleString(v, i, config) &&
+            `${i !== 0 ? `@media screen and (min-width: ${bp}px){` : ""}${pseudoSelectors[k]}{${createStyleString(
+              v,
+              i,
+              config
+            )}}${i !== 0 ? `}` : ""}`
+        )
+        .join("")
+    )
+    .join("");
+
   const styles = [];
-  const id = (base + pseudo) !== "" ? String(hashString(base + pseudo)) : undefined;
-  let style = (base + pseudo).replace(/&/g, `.jsx-${id}`);
-  
+  const id = base + pseudo !== "" ? String(hashString(base + pseudo)) : undefined;
+  const style = (base + pseudo).replace(/&/g, `.jsx-${id}`);
+
   /*= =============== Create Styles & Classes - CSS Selectors ================ */
   Object.entries(cssProps).forEach(([key, val]: [string, string | number | (string | number)[]]) => {
     const style = createSingleStyle([key, val], 0, config);
@@ -931,7 +960,10 @@ export function nextStyledSystem(props: any, config: ConfigProps = {}): { id?: s
           const className = getClassName(key, val, i, false, config);
           styles.push([
             className,
-            `@media screen and (min-width: ${breakpoints[i]}px){.${className.replace(/([%])/g, "\\$1")}{${responsiveStyle}}}`
+            `@media screen and (min-width: ${breakpoints[i]}px){.${className.replace(
+              /([%])/g,
+              "\\$1"
+            )}{${responsiveStyle}}}`,
           ]);
         } else {
           break;
@@ -939,17 +971,16 @@ export function nextStyledSystem(props: any, config: ConfigProps = {}): { id?: s
       }
     }
   });
-  
+
   /*= =============== Create Styles & Classes - PSEUDO SELECTORS ================ */
   Object.entries(pseudoProps).forEach(([k, v]) => {
-    
     Object.entries(v).forEach(([key, val]) => {
       const style = createSingleStyle([key, val], 0, config);
       const className = getClassName(key, val, 0, k, config);
       const pseudoClassName = pseudoSelectors[k].replace(/&/gi, `.${className}`);
-      
+
       styles.push([className, `${pseudoClassName}{${style}}`]);
-      
+
       if (Array.isArray(val)) {
         for (let i = 1; i < breakpoints.length; i++) {
           const responsiveStyle = createSingleStyle([key, val], i, config);
@@ -958,7 +989,7 @@ export function nextStyledSystem(props: any, config: ConfigProps = {}): { id?: s
             const pseudoClassName = pseudoSelectors[k].replace(/&/gi, `.${className}`);
             styles.push([
               className,
-              `@media screen and (min-width: ${breakpoints[i]}px){${pseudoClassName}{${responsiveStyle}}}`
+              `@media screen and (min-width: ${breakpoints[i]}px){${pseudoClassName}{${responsiveStyle}}}`,
             ]);
           } else {
             break;
@@ -967,6 +998,6 @@ export function nextStyledSystem(props: any, config: ConfigProps = {}): { id?: s
       }
     });
   });
-  
+
   return { id: id || undefined, styles: id ? style : undefined, styleArray: styles, filteredProps };
 }
