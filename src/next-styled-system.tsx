@@ -763,13 +763,13 @@ function parseCssSizes(val: number | string, type: "" | "fontSize" | "space" | "
     return val.replace(/([\d.]+)px/gi, match => `${parseFloat(match) / remBase}rem`);
   }
   if (typeof val === "number" && val >= 0 && val < cfg[type].length && val % 1 === 0) {
-    return `${cfg[type][val] / remBase}rem`;
+    return `${(cfg[type][val] / remBase).toFixed(2)}rem`;
   }
   if (typeof val === "number" && val < 0 && val * -1 < cfg[type].length && val % 1 === 0) {
-    return `-${cfg[type][val * -1] / remBase}rem`;
+    return `-${(cfg[type][val * -1] / remBase).toFixed(2)}rem`;
   }
   if (typeof val === "number") {
-    return `${val / remBase}rem`;
+    return `${(val / remBase).toFixed(2)}rem`;
   }
 }
 
