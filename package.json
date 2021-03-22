@@ -1,6 +1,6 @@
 {
   "name": "next-styled-system",
-  "version": "4.1.7",
+  "version": "4.1.8",
   "license": "MIT",
   "main": "dist/next-styled-system.js",
   "umd:main": "dist/next-styled-system.umd.js",
