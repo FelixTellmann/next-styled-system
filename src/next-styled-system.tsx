@@ -760,16 +760,16 @@ function parseCssSizes(val: number | string, type: "" | "fontSize" | "space" | "
     }
   }
   if (typeof val === "string") {
-    return val.replace(/([\d.]+)px/gi, match => `${parseFloat(match) / remBase}rem`);
+    return val.replace(/([-\d.]+)px/gi, match => `${(parseFloat(match) / remBase).toFixed(3)}rem`);
   }
   if (typeof val === "number" && val >= 0 && val < cfg[type].length && val % 1 === 0) {
-    return `${(cfg[type][val] / remBase).toFixed(2)}rem`;
+    return `${(cfg[type][val] / remBase).toFixed(3)}rem`;
   }
   if (typeof val === "number" && val < 0 && val * -1 < cfg[type].length && val % 1 === 0) {
-    return `-${(cfg[type][val * -1] / remBase).toFixed(2)}rem`;
+    return `-${(cfg[type][val * -1] / remBase).toFixed(3)}rem`;
   }
   if (typeof val === "number") {
-    return `${(val / remBase).toFixed(2)}rem`;
+    return `${(val / remBase).toFixed(3)}rem`;
   }
 }
 
@@ -866,10 +866,10 @@ function getClassName(key, val, bp, pseudo, config) {
     config
   ).split(" ");
   let cleanCssValue = cssValue
-    .map(val => (val.match(/rem$/) ? String(+val.replace(/rem$/, "") * 10) : val))
+    .map(val => (val.match(/rem$/) ? String((+val.replace(/rem$/, "") * 10).toFixed(3)) : val))
     .join("-")
     .replace(/\s/g, "-")
-    .replace(/[!&\/\\#,+()$~%.'":*?<>{}]/g, "");
+    .replace(/[!&/\\#,+()$~%.'":*?<>{}]/g, "");
 
   const className = cssSelectors[key][1] ? cssSelectors[key][1][0] : key;
   const responsive = bp > 0 ? `bp${bp}-` : "";
