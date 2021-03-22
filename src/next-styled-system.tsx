@@ -868,8 +868,8 @@ function getClassName(key, val, bp, pseudo, config) {
   let cleanCssValue = cssValue
     .map(val => (val.match(/rem$/) ? String(Math.round(+val.replace(/rem$/, "") * 100) / 100) : val))
     .join("-")
-    .replace(/\s/g, "-")
-    .replace(/[!&/\\#,+()$~%.'":*?<>{}]/g, "");
+    .replace(/[\s.]/g, "-")
+    .replace(/[!&/\\#,+()$~%'":*?<>{}]/g, "");
 
   const className = cssSelectors[key][1] ? cssSelectors[key][1][0] : key;
   const responsive = bp > 0 ? `bp${bp}-` : "";
