@@ -865,6 +865,7 @@ function getClassName(key, val, bp, pseudo, config) {
     getResponsiveValue(val, bp),
     config
   ).split(" ");
+  console.log(cssValue);
   let cleanCssValue = cssValue
     .map(val => (val.match(/rem$/) ? String(+val.replace(/rem$/, "") * 10) : val))
     .join("-")
