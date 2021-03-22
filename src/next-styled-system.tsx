@@ -909,13 +909,13 @@ export function nextStyledSystem(
     return acc;
   }, {}); /*, [props]);*/
   const cssProps = /*useMemo(() => */ Object.entries(props).reduce((a, [k, v]) => {
-    if (cssSelectors[k] !== undefined && pseudoSelectors[k] === undefined) {
+    if (cssSelectors[k] !== undefined && pseudoSelectors[k] === undefined && v !== undefined && v !== null) {
       return { ...a, [k]: v };
     }
     return a;
   }, {}); /*, [props]);*/
   const pseudoProps = /*useMemo(() => */ Object.entries(props).reduce((a, [k, v]) => {
-    if (cssSelectors[k] === undefined && pseudoSelectors[k] !== undefined) {
+    if (cssSelectors[k] === undefined && pseudoSelectors[k] !== undefined && v !== undefined && v !== null) {
       return { ...a, [k]: v };
     }
     return a;
