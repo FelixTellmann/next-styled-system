@@ -554,37 +554,37 @@ const cssSelectors = {
   px: [{ paddingLeft: "space", paddingRight: "space" }, [`px`]],
   paddingY: [{ paddingTop: "space", paddingBottom: "space" }, [`py`]],
   py: [{ paddingTop: "space", paddingBottom: "space" }, [`py`]],
-  border: ["", [`b`]],
-  borderWidth: ["", [`bw`]],
+  border: ["size", [`b`]],
+  borderWidth: ["size", [`bw`]],
   borderColor: ["color", [`bc`]],
   borderStyle: ["", [`bs`]],
-  borderRadius: ["", [`br`]],
-  borderTop: ["", [`bt`]],
-  borderTopWidth: ["", [`btw`]],
+  borderRadius: ["size", [`br`]],
+  borderTop: ["size", [`bt`]],
+  borderTopWidth: ["size", [`btw`]],
   borderTopColor: ["color", [`btc`]],
   borderTopStyle: ["", [`bts`]],
-  borderTopLeftRadius: ["", [`btlr`]],
-  borderTopRightRadius: ["", [`btrr`]],
-  borderBottom: ["", [`bb`]],
-  borderBottomWidth: ["", [`bbw`]],
+  borderTopLeftRadius: ["size", [`btlr`]],
+  borderTopRightRadius: ["size", [`btrr`]],
+  borderBottom: ["size", [`bb`]],
+  borderBottomWidth: ["size", [`bbw`]],
   borderBottomColor: ["color", [`bbc`]],
   borderBottomStyle: ["", [`bbs`]],
-  borderBottomLeftRadius: ["", [`bblr`]],
-  borderBottomRightRadius: ["", [`bbrr`]],
-  borderLeft: ["", [`bl`]],
-  borderLeftWidth: ["", [`blw`]],
+  borderBottomLeftRadius: ["size", [`bblr`]],
+  borderBottomRightRadius: ["size", [`bbrr`]],
+  borderLeft: ["size", [`bl`]],
+  borderLeftWidth: ["size", [`blw`]],
   borderLeftColor: ["color", [`blc`]],
   borderLeftStyle: ["", [`bls`]],
-  borderRight: ["", [`br`]],
-  borderRightWidth: ["", [`brw`]],
+  borderRight: ["size", [`br`]],
+  borderRightWidth: ["size", [`brw`]],
   borderRightColor: ["", [`brc`]],
   borderRightStyle: ["", [`brs`]],
-  borderX: [{ borderLeft: "", borderRight: "" }, [`bx`]],
-  borderXWidth: [{ borderLeftWidth: "", borderRightWidth: "" }, [`bxw`]],
+  borderX: [{ borderLeft: "size", borderRight: "size" }, [`bx`]],
+  borderXWidth: [{ borderLeftWidth: "size", borderRightWidth: "size" }, [`bxw`]],
   borderXColor: [{ borderLeftColor: "color", borderRightColor: "" }, [`bxc`]],
   borderXStyle: [{ borderLeftStyle: "", borderRightStyle: "" }, [`bxs`]],
-  borderY: [{ borderTop: "", borderBottom: "" }, [`by`]],
-  borderYWidth: [{ borderTopWidth: "", borderBottomWidth: "" }, [`byw`]],
+  borderY: [{ borderTop: "size", borderBottom: "size" }, [`by`]],
+  borderYWidth: [{ borderTopWidth: "size", borderBottomWidth: "size" }, [`byw`]],
   borderYColor: [{ borderTopColor: "color", borderBottomColor: "color" }, [`byc`]],
   borderYStyle: [{ borderTopStyle: "", borderBottomStyle: "" }, [`bys`]],
   width: ["space", [`w`]],
@@ -752,7 +752,14 @@ function parseCssVariables(val: string | number) {
     .replace(/^$/, "''");
 }
 
-function parseCssSizes(val: number | string, type: "" | "fontSize" | "space" | "color", { remBase, ...cfg }): string {
+function parseCssSizes(
+  val: number | string,
+  type: "" | "fontSize" | "space" | "color" | "size",
+  { remBase, ...cfg }
+): string {
+  if (typeof val === "number" && type === "size") {
+    return `${Math.round((val / remBase) * 100) / 100}rem`;
+  }
   if (typeof val === "string" && type === "color") {
     val = val.toLowerCase();
     if (cfg[type][val.split(".")[0]] && cfg[type][val.split(".")[0]][val.split(".")[1]]) {
@@ -778,9 +785,9 @@ function getResponsiveValue(val: string | number | (string | number)[], bp: numb
   return val[val.length - 1 >= bp ? bp : val.length - 1];
 }
 
-function toCssValue(key: "" | "fontSize" | "space" | "color" | "content", val: string | number, cfg): string {
+function toCssValue(key: "" | "fontSize" | "space" | "color" | "content" | "size", val: string | number, cfg): string {
   if (key === "content") return `"${val}"`;
-  if (cfg[key]) {
+  if (cfg[key] || key === "size") {
     return parseCssVariables(parseCssSizes(val, key, cfg));
   }
 
