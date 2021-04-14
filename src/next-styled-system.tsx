@@ -525,6 +525,12 @@ const defaultConfig: ConfigProps = {
   },
 };
 
+defaultConfig.color.grey = defaultConfig.color.gray;
+defaultConfig.color.warmGrey = defaultConfig.color.warmGray;
+defaultConfig.color.coolGrey = defaultConfig.color.coolGray;
+defaultConfig.color.trueGrey = defaultConfig.color.trueGray;
+defaultConfig.color.blueGrey = defaultConfig.color.blueGray;
+
 const cssSelectors = {
   margin: ["space", [`m`]],
   m: [{ margin: "space" }, [`m`]],
