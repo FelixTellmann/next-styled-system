@@ -152,6 +152,7 @@ export type LayoutProps = {
   textDecoration?: CSS.TextDecoration | CSS.TextDecoration[];
   textTransform?: CSS.TextTransform | CSS.TextTransform[];
   textShadow?: CSS.TextShadow | CSS.TextShadow[];
+  textOverflow?: CSS.TextOverflow | CSS.TextOverflow[];
   whiteSpace?: CSS.WhiteSpace | CSS.WhiteSpace[];
   wordWrap?: CSS.WordWrap | CSS.WordWrap[];
   wordBreak?: CSS.WordBreak | CSS.WordBreak[];
@@ -683,6 +684,7 @@ const cssSelectors = {
   textDecoration: [""],
   textTransform: [""],
   textShadow: [""],
+  textOverflow: [""],
   whiteSpace: [""],
   wordWrap: [""],
   wordBreak: [""],
